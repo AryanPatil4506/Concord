@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:917px;height:490px;border-radius:18px}
+
+.hd{position:absolute;left:16px;top:12px;font-size:21px;font-weight:800;color:var(--navy)}
+.sub{position:absolute;left:16px;top:42px;font-size:13.5px;color:var(--ink2)}
+.arch{position:absolute;left:14px;top:74px;width:300px;bottom:14px;display:flex;flex-direction:column;gap:7px}
+.a{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 9px;font-size:13.5px;color:var(--ink2);line-height:1.2}
+.a b{display:block;font-size:14.5px;color:var(--navy)}
+.arr{text-align:center;color:var(--muted);font-size:13px;line-height:.6}
+.qs{position:absolute;left:330px;right:14px;top:74px;bottom:14px;display:flex;flex-direction:column;gap:6px}
+.q{background:#F6F8FB;border-radius:10px;padding:6px 10px}
+.q > b{display:block;font-size:14.5px;color:var(--navy)}
+.q strong{color:var(--navy)}
+.q span{display:block;font-size:13.5px;color:var(--ink2);line-height:1.25}
+
+</style></head><body><div class="canvas">
+<div class="hd">“YC says yes tomorrow” — built to survive success</div><div class="sub">what breaks first, and what we already do about it</div>
+<div class="arch"><div class="a"><b>Gateway</b>FastAPI · WebSocket · auth · autoscaled</div><div class="arr">▼</div>
+<div class="a" style="border-left:5px solid var(--orange)"><b>Mission workers</b>1 decision loop per mission, sharded</div><div class="arr">▼</div>
+<div class="a" style="background:#FFF3EC"><b>Event bus + decision log</b>NATS / Redis Streams · append-only</div><div class="arr">▼</div>
+<div class="a" style="border-left:5px solid var(--blue)"><b>Edge gateways</b>ROS 2 · PX4 · simulator</div>
+<div class="a"><b>Tests</b>property-based · 300-seed regression · chaos · load (k6)</div></div>
+<div class="qs"><div class="q"><b>10× more missions</b><span>stateless gateway + one worker per mission; <strong>0.8 ms</strong> per mission tick → ~250 live missions per core (est.)</span></div><div class="q"><b>100+ agents</b><span>repair re-plan <strong>8.6 ms at 200 agents</strong>; global re-plans run in the background</span></div><div class="q"><b>A server crashes</b><span>agents keep their task bundles; a standby worker replays the event log</span></div><div class="q"><b>Cloud link drops</b><span>edge gateway runs decentralised CBBA; on-board battery-reserve rule</span></div><div class="q"><b>LLM outage</b><span>zero control impact — local model + preset missions</span></div><div class="q"><b>Bad release</b><span>CI replays the 300-mission benchmark and blocks regressions</span></div></div></div></body></html>

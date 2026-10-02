@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:1205px;height:365px;border-radius:18px}
+
+.hd{position:absolute;left:16px;top:12px;font-size:21px;font-weight:800;color:var(--navy)}
+table{position:absolute;left:14px;top:50px;width:1177px;border-collapse:collapse}
+th{font-size:12.5px;color:var(--muted);text-align:left;font-weight:800;letter-spacing:.6px;padding:4px 8px;border-bottom:1.5px solid var(--line)}
+td{padding:12px 8px;border-bottom:1px solid var(--grid);font-size:16px;color:var(--ink2);vertical-align:middle}
+td.r{font-weight:800;color:var(--navy);width:290px;font-size:16.5px}td.m{line-height:1.25}
+.lv{display:inline-block;font-size:13.5px;font-weight:800;border-radius:6px;padding:3px 9px}
+
+</style></head><body><div class="canvas">
+<div class='hd'>Challenges &amp; risks — each with a tested mitigation</div><table><tr><th>RISK</th><th>LIKELIHOOD</th><th>IMPACT</th><th>MITIGATION</th></tr><tr><td class='r'>Too much scope for 36 h</td><td><span class="lv" style="background:#FDECEC;color:#D03B3B">High</span></td><td><span class="lv" style="background:#FDECEC;color:#D03B3B">High</span></td><td class='m'>v0 already runs allocator, re-planner, forecaster, benchmark; hour-12 gate; cut list</td></tr><tr><td class='r'>Bug appears live on stage</td><td><span class="lv" style="background:#FFF4D6;color:#9A6A00">Med</span></td><td><span class="lv" style="background:#FDECEC;color:#D03B3B">High</span></td><td class='m'>4,500 seeded missions fuzzed; invariant tests; 10 dry runs; backup video</td></tr><tr><td class='r'>Sim-to-real gap</td><td><span class="lv" style="background:#FDECEC;color:#D03B3B">High</span></td><td><span class="lv" style="background:#FFF4D6;color:#9A6A00">Med</span></td><td class='m'>one agent interface → ROS 2 / PX4 SITL bridge; physics out of PS scope</td></tr><tr><td class='r'>Venue internet fails</td><td><span class="lv" style="background:#FFF4D6;color:#9A6A00">Med</span></td><td><span class="lv" style="background:#FFF4D6;color:#9A6A00">Med</span></td><td class='m'>local LLM (Ollama) + preset task graphs + template explanations</td></tr><tr><td class='r'>LLM returns a bad task graph</td><td><span class="lv" style="background:#FFF4D6;color:#9A6A00">Med</span></td><td><span class="lv" style="background:#E9F8EF;color:#0B8A4A">Low</span></td><td class='m'>schema-constrained output → validator → human confirm → preset</td></tr></table></div></body></html>

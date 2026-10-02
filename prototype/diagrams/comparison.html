@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 690px; }
+  table { position: absolute; left: 36px; top: 130px; width: 1528px; border-collapse: separate; border-spacing: 0; }
+  th, td { text-align: center; padding: 11px 6px; border-bottom: 1px solid var(--grid); font-size: 14px; }
+  th { font-size: 13.5px; color: var(--navy); font-weight: 800; vertical-align: bottom; line-height: 1.25; }
+  th small { display: block; font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 3px; }
+  td.cap { text-align: left; font-size: 14.5px; font-weight: 700; color: var(--navy); width: 330px; }
+  td.cap small { display: block; font-size: 11.5px; color: var(--muted); font-weight: 500; }
+  .ours { background: #FFF3EC; }
+  th.ours { border-top-left-radius: 14px; border-top-right-radius: 14px; color: #B4471C; }
+  tr:last-child td.ours { border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; }
+  .f { color: var(--navy); font-size: 21px; line-height: 1; }
+  .p { color: #7F8FA8; font-size: 21px; line-height: 1; }
+  .n { color: #C3CBD6; font-size: 18px; font-weight: 700; }
+  .honest td { background: #F7F9FC; }
+  .honest td.ours { background: #FBE9DF; }
+  .legend { position: absolute; left: 36px; top: 640px; font-size: 12.5px; color: var(--ink2); }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:28px;">
+    <div class="title" style="font-size:27px;">Where CONCORD sits among existing approaches</div>
+    <div class="subtitle">Fleet tools fly drones; defence stacks are closed; research planners stop at the plan. CONCORD owns the mission-level loop in the open.</div>
+  </div>
+  <table>
+    <tr><th style="text-align:left">Capability</th><th class="ours">CONCORD<small>this proposal</small></th><th>FlytBase<small>drone-dock autonomy (India-born)</small></th><th>DJI FlightHub 2<small>cloud fleet mgmt</small></th><th>Open-RMF<small>open-source fleet mgmt</small></th><th>Auterion Nemyx<small>swarm engine (defence)</small></th><th>Anduril Lattice<small>mission autonomy (defence)</small></th><th>LLM planners<small>e.g. SMART-LLM</small></th><th>CBBA<small>MIT, 2009</small></th></tr>
+    <tr><td class="cap">Heterogeneous air + ground fleet</td><td class="ours f">●</td><td class="p">◐</td><td class="p">◐</td><td class="p">◐</td><td class="p">◐</td><td class="f">●</td><td class="p">◐</td><td class="f">●</td></tr>
+    <tr><td class="cap">Plain-language mission → task graph</td><td class="ours f">●</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="f">●</td><td class="n">—</td></tr>
+    <tr><td class="cap">Automatic re-allocation when agents fail</td><td class="ours f">●</td><td class="n">—</td><td class="n">—</td><td class="p">◐</td><td class="p">◐</td><td class="f">●</td><td class="n">—</td><td class="f">●</td></tr>
+    <tr><td class="cap">Comms-aware<small>relay placement · value-of-information · disconnected ops</small></td><td class="ours f">●</td><td class="p">◐</td><td class="p">◐</td><td class="n">—</td><td class="p">◐</td><td class="p">◐</td><td class="n">—</td><td class="p">◐</td></tr>
+    <tr><td class="cap">Quantified feasibility forecast → human escalation</td><td class="ours f">●</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+    <tr><td class="cap">Explained, replayable decision log</td><td class="ours f">●</td><td class="p">◐</td><td class="p">◐</td><td class="p">◐</td><td class="n">—</td><td class="n">—</td><td class="p">◐</td><td class="n">—</td></tr>
+    <tr><td class="cap">Open, civilian-first, runs on a laptop</td><td class="ours f">●</td><td class="p">◐</td><td class="p">◐</td><td class="f">●</td><td class="n">—</td><td class="n">—</td><td class="f">●</td><td class="f">●</td></tr>
+    <tr class="honest"><td class="cap">Proven on real hardware<small>our honest gap</small></td><td class="ours p">◐</td><td class="f">●</td><td class="f">●</td><td class="f">●</td><td class="f">●</td><td class="f">●</td><td class="p">◐</td><td class="f">●</td></tr>
+  </table>
+  <div class="legend"><b style="color:var(--navy)">●</b> documented core capability &nbsp;·&nbsp; <b style="color:#7F8FA8">◐</b> partial / adjacent / limited scope &nbsp;·&nbsp; <b style="color:#C3CBD6">—</b> not publicly documented &nbsp;&nbsp;|&nbsp;&nbsp; Based on public product pages and papers, Sep 2026. CONCORD hardware path: ROS 2 / PX4 SITL bridge behind the same agent interface.</div>
+</div>
+</body></html>

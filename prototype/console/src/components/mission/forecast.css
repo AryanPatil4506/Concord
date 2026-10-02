@@ -1,0 +1,51 @@
+.panel { padding: var(--sp-4); display: grid; gap: var(--sp-3); }
+.panel + .panel { border-top: 1px solid var(--border); }
+
+.forecast-hero { display: flex; align-items: center; gap: var(--sp-4); }
+.forecast-value {
+  font-size: 44px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  transition: color var(--dur-slow) var(--ease);
+  min-width: 96px;
+}
+.forecast-value span { font-size: 22px; margin-left: 2px; color: var(--text-3); letter-spacing: 0; }
+.tone-text-muted { color: var(--text-3); }
+.forecast-meta { display: grid; gap: 1px; font-size: var(--fs-xs); }
+.forecast-caption { font-size: var(--fs-sm); font-weight: 500; color: var(--text-1); }
+
+.forecast-chart { position: relative; }
+.forecast-chart svg { display: block; overflow: visible; }
+.fc-grid { stroke: rgba(255, 255, 255, 0.06); stroke-width: 1; }
+.fc-axis { fill: var(--text-3); font-size: 10px; font-variant-numeric: tabular-nums; }
+.fc-danger { fill: var(--critical); opacity: 0.06; }
+.fc-threshold { stroke: var(--critical); stroke-opacity: 0.7; stroke-width: 1; stroke-dasharray: 3 3; }
+.fc-threshold-label { fill: var(--critical-text); opacity: 0.85; }
+.fc-now { stroke: var(--text-3); stroke-width: 1; opacity: 0.6; }
+.fc-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.fc-dot { fill: var(--accent); stroke: var(--surface-1); stroke-width: 2; }
+.fc-dot-crit { fill: var(--critical); }
+.fc-cross { stroke: var(--text-2); stroke-width: 1; }
+.fc-hover-dot { fill: var(--text-1); stroke: var(--surface-1); stroke-width: 2; }
+.fc-tip {
+  position: absolute;
+  top: -6px;
+  transform: translate(-50%, -100%);
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  padding: 6px 9px;
+  background: #1f2837;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-pop);
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.fc-legend { display: flex; gap: var(--sp-4); margin-top: 6px; font-size: var(--fs-2xs); color: var(--text-3); }
+.fc-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.fc-key-line { width: 14px; height: 2px; background: var(--accent); border-radius: 2px; }
+.fc-key-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.fc-key-now { width: 1px; height: 10px; background: var(--text-3); }

@@ -1,0 +1,35 @@
+.swarm-count { font-size: var(--fs-xs); }
+.swarm-list { list-style: none; margin: 0 calc(var(--sp-2) * -1); padding: 0; display: grid; gap: 1px; }
+.swarm-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: 8px var(--sp-2);
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease);
+}
+.swarm-row:hover { background: var(--surface-hover); }
+.swarm-row.is-selected { background: var(--accent-soft); }
+.swarm-glyph { display: grid; place-items: center; }
+.swarm-main { display: grid; min-width: 0; }
+.swarm-name { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: var(--fs-sm); }
+.swarm-activity { font-size: var(--fs-xs); color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.swarm-row.is-lost .swarm-name { color: var(--text-3); }
+.swarm-row.is-lost .swarm-activity { color: var(--text-3); }
+.swarm-flag { width: 13px; height: 13px; }
+.flag-storm { color: var(--map-storm); }
+.swarm-flag-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warning); display: inline-block; }
+.swarm-side { display: grid; justify-items: end; gap: 4px; min-width: 112px; }
+.swarm-batt { display: grid; grid-template-columns: 64px 32px; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--text-2); text-align: right; }
+.swarm-status { display: flex; align-items: center; gap: 8px; font-size: var(--fs-2xs); }
+.swarm-status svg { width: 11px; height: 11px; }
+.swarm-kits, .link-ok, .link-bad { display: inline-flex; align-items: center; gap: 3px; }
+.swarm-kits { color: var(--text-2); }
+.link-ok { color: var(--text-3); }
+.link-bad { color: var(--critical-text); font-weight: 500; }
+.lost-tag { font-size: var(--fs-xs); color: var(--text-3); font-weight: 500; padding: 2px 8px; border-radius: var(--r-pill); background: var(--surface-3); }

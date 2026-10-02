@@ -1,0 +1,56 @@
+[
+ {
+  "n": 5,
+  "tasks": 15,
+  "global_ms": 0.37180003710091114,
+  "repair_ms": 0.07110001752153039,
+  "cold_ms": 25.646999944001436,
+  "assigned_frac": 1.0,
+  "repaired": 4.6
+ },
+ {
+  "n": 10,
+  "tasks": 30,
+  "global_ms": 1.4554000226780772,
+  "repair_ms": 0.17610000213608146,
+  "cold_ms": 72.5712000275962,
+  "assigned_frac": 1.0,
+  "repaired": 5.4
+ },
+ {
+  "n": 20,
+  "tasks": 60,
+  "global_ms": 6.28789997426793,
+  "repair_ms": 0.26649999199435115,
+  "cold_ms": 118.07299999054521,
+  "assigned_frac": 1.0,
+  "repaired": 6
+ },
+ {
+  "n": 50,
+  "tasks": 150,
+  "global_ms": 46.115699980873615,
+  "repair_ms": 0.6022999878041446,
+  "cold_ms": 292.3347999458201,
+  "assigned_frac": 1.0,
+  "repaired": 6
+ },
+ {
+  "n": 100,
+  "tasks": 300,
+  "global_ms": 176.7705999664031,
+  "repair_ms": 1.126500021200627,
+  "cold_ms": 512.3260999680497,
+  "assigned_frac": 1.0,
+  "repaired": 6
+ },
+ {
+  "n": 200,
+  "tasks": 600,
+  "global_ms": 743.3371999650262,
+  "repair_ms": 2.585300011560321,
+  "cold_ms": 792.0529000111856,
+  "assigned_frac": 1.0,
+  "repaired": 6
+ }
+]

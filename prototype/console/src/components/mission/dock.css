@@ -1,0 +1,41 @@
+.dock {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 6px 6px 6px 14px;
+  background: rgba(20, 26, 37, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-pop);
+  max-width: 100%;
+}
+.dock-label { position: relative; display: grid; gap: 4px; white-space: nowrap; }
+.dock-cool { display: block; height: 2px; border-radius: 2px; background: var(--accent); transform-origin: left; }
+.dock-buttons { display: flex; gap: 2px; }
+.dock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.dock-btn svg { width: 15px; height: 15px; }
+.dock-btn:hover:not(:disabled) { background: var(--surface-active); color: var(--text-1); }
+.dock-btn.is-active { background: var(--warning-soft); color: var(--warning); }
+.dock-btn:disabled { opacity: 0.38; cursor: not-allowed; }
+
+@media (max-width: 720px) {
+  .dock-label { display: none; }
+  .dock { padding: 4px; }
+  .dock-btn span { display: none; }
+  .dock-btn { padding: 0 10px; }
+}

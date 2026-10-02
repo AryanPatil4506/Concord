@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:437px;height:293px;border-radius:18px}
+
+.hd{position:absolute;left:14px;top:10px;font-size:17px;font-weight:800;color:var(--navy)}
+.g{position:absolute;left:10px;right:10px;top:40px;bottom:10px;display:flex;flex-direction:column;gap:6px}
+.x{flex:1;background:var(--navy);border-radius:10px;padding:5px 10px}
+.x b{display:block;font-size:14px;color:var(--gold)}
+.x span{display:block;font-size:12.5px;color:#DCE6F5;line-height:1.2}
+.ok{position:absolute;right:14px;top:12px;font-size:12px;font-weight:800;color:var(--green);background:var(--green-soft);border-radius:6px;padding:2px 7px}
+
+</style></head><body><div class="canvas">
+<div class="hd">Tested to survive success</div><div class="ok">4,500 missions · 0 crashes</div><div class="g"><div class="x"><b>Property-based tests</b><span>no double-assignment · reserve never violated · DAG order kept</span></div><div class="x"><b>Simulation regression</b><span>300 seeded missions per pull request, metric gates</span></div><div class="x"><b>Chaos testing</b><span>the disruption injector doubles as a chaos monkey</span></div><div class="x"><b>Load testing</b><span>k6: 1,000 live viewers, 1,000 simulated agents</span></div></div></div></body></html>

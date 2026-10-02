@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 720px; }
+  .bubble { position: absolute; left: 36px; top: 120px; width: 380px; background: var(--navy); color: #fff; border-radius: 18px; padding: 20px 22px; font-size: 20px; line-height: 1.45; font-weight: 600; }
+  .bubble:after { content: ""; position: absolute; right: -16px; top: 60px; border: 10px solid transparent; border-left: 16px solid var(--navy); }
+  .bubble small { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 1px; color: var(--gold); margin-bottom: 8px; }
+  .n { position: absolute; width: 208px; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+  .n .t { font-size: 12px; font-weight: 800; letter-spacing: 1px; }
+  .n .h { font-size: 16.5px; font-weight: 800; color: var(--navy); margin-top: 2px; }
+  .n .c { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .cap { font-size: 11.5px; font-weight: 700; padding: 2px 7px; border-radius: 6px; background: #EEF1F5; color: var(--ink2); }
+  .pri { font-size: 11.5px; font-weight: 800; padding: 2px 7px; border-radius: 6px; }
+  .sv { border-left: 5px solid #43A5D9; } .sv .t { color: #1F7FB0; }
+  .lo { border-left: 5px solid #E8A53B; } .lo .t { color: #B87812; }
+  .dl { border-left: 5px solid var(--orange); } .dl .t { color: #B4471C; }
+  .rl { border-left: 5px solid #8C6FE0; } .rl .t { color: var(--violet); }
+  .rt { border-left: 5px solid #7A8699; } .rt .t { color: var(--ink2); }
+  .checks { position: absolute; left: 36px; top: 420px; width: 380px; }
+  .checks .row { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink2); margin-bottom: 10px; line-height: 1.35; }
+  .ok { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--green-soft); color: var(--green); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .dyn { position: absolute; font-size: 12px; font-weight: 700; color: #B87812; background: #FFF6E6; border: 1px dashed #E8A53B; border-radius: 8px; padding: 4px 8px; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:28px;">
+    <div class="title" style="font-size:27px;">From one sentence to an executable Mission DAG</div>
+    <div class="subtitle">The LLM only translates intent into a typed, schema-checked task graph; the operator confirms it; algorithms take it from there</div>
+  </div>
+  <div class="bubble"><small>OPERATOR TYPES</small>“Survey sectors A–D, find survivors, get a med-kit to each one, and keep a link to base.”</div>
+  <div class="checks">
+    <div class="row"><span class="ok">✓</span><span><b style="color:var(--navy)">Schema-valid</b> — every node has type, target, priority, required capabilities, duration</span></div>
+    <div class="row"><span class="ok">✓</span><span><b style="color:var(--navy)">Map-valid</b> — sectors A–D exist; a camera, a payload and a relay agent are available</span></div>
+    <div class="row"><span class="ok">✓</span><span><b style="color:var(--navy)">Acyclic</b> — DELIVER waits for LOCATE; RETURN waits for everything</span></div>
+    <div class="row"><span class="ok">✓</span><span><b style="color:var(--navy)">Human-confirmed</b> — one click; offline fallback loads a preset DAG</span></div>
+  </div>
+
+  <svg class="abs" style="left:0;top:0" width="1600" height="720">
+    <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7A8699"/></marker></defs>
+    <g stroke="#9AA6B6" stroke-width="2" fill="none" marker-end="url(#a)">
+      <path d="M 718 170 C 770 170 780 330 832 330"/>
+      <path d="M 718 290 C 770 290 780 340 832 340"/>
+      <path d="M 718 410 C 770 410 780 350 832 350"/>
+      <path d="M 718 530 C 770 530 780 360 832 360"/>
+      <path d="M 1040 345 L 1100 345"/>
+      <path d="M 1308 345 C 1350 345 1350 330 1380 330"/>
+      <path d="M 1308 600 C 1360 600 1380 420 1420 400"/>
+    </g>
+  </svg>
+  <div class="n sv" style="left:510px; top:130px;"><div class="t">SURVEY · A</div><div class="h">Sweep sector A</div><div class="c"><span class="cap">camera</span><span class="pri" style="background:#EAF3FF;color:#1F7FB0">priority 0.4</span></div></div>
+  <div class="n sv" style="left:510px; top:250px;"><div class="t">SURVEY · B</div><div class="h">Sweep sector B</div><div class="c"><span class="cap">camera</span><span class="pri" style="background:#EAF3FF;color:#1F7FB0">priority 0.4</span></div></div>
+  <div class="n sv" style="left:510px; top:370px;"><div class="t">SURVEY · C</div><div class="h">Sweep sector C</div><div class="c"><span class="cap">camera</span><span class="pri" style="background:#EAF3FF;color:#1F7FB0">priority 0.4</span></div></div>
+  <div class="n sv" style="left:510px; top:490px;"><div class="t">SURVEY · D</div><div class="h">Sweep sector D</div><div class="c"><span class="cap">camera</span><span class="pri" style="background:#EAF3FF;color:#1F7FB0">priority 0.4</span></div></div>
+  <div class="n lo" style="left:832px; top:290px;"><div class="t">LOCATE · SURVIVOR</div><div class="h">Confirm survivor</div><div class="c"><span class="cap">camera</span><span class="cap">spawned at runtime</span></div></div>
+  <div class="n dl" style="left:1100px; top:290px;"><div class="t">DELIVER · SURVIVOR</div><div class="h">Med-kit to survivor</div><div class="c"><span class="cap">payload</span><span class="pri" style="background:#FFE7DB;color:#B4471C">critical · 1.0</span></div></div>
+  <div class="n rl" style="left:1100px; top:540px;"><div class="t">RELAY</div><div class="h">Keep link to base</div><div class="c"><span class="cap">relay</span><span class="pri" style="background:#EEE9FF;color:var(--violet)">continuous</span></div></div>
+  <div class="n rt" style="left:1380px; top:290px; width:190px;"><div class="t">RETURN</div><div class="h">All agents home</div><div class="c"><span class="cap">any</span><span class="cap">after all tasks</span></div></div>
+  <div class="dyn" style="left:830px; top:390px;">new survivors add LOCATE → DELIVER<br>pairs while the mission runs</div>
+</div>
+</body></html>

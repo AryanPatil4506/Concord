@@ -1,0 +1,98 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 930px; }
+  .band { position: absolute; border-radius: 18px; }
+  .band .chip { position: absolute; left: 16px; top: -13px; }
+  .intent { background: var(--violet-soft); }
+  .intent .chip { background: var(--violet); color: #fff; }
+  .decision { background: var(--orange-soft); }
+  .decision .chip { background: var(--orange); color: #fff; }
+  .world { background: var(--blue-soft); }
+  .world .chip { background: var(--blue); color: #fff; }
+  .bi { border-left: 5px solid var(--violet) !important; }
+  .bd { border-left: 5px solid var(--orange) !important; }
+  .bw { border-left: 5px solid var(--blue) !important; }
+  .bo { border-left: 5px solid var(--navy) !important; }
+  .left { position: absolute; left: 36px; top: 124px; width: 262px; height: 690px; background: #F6F8FB; border-radius: 18px; border: 1.5px solid var(--line); }
+  .left .chip { position: absolute; left: 16px; top: -13px; background: var(--navy); color: #fff; }
+  .badge { position: absolute; right: 36px; top: 30px; text-align: right; }
+  .badge .pill { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; font-size: 16px; padding: 9px 16px; border-radius: 999px; }
+  .badge .sub { font-size: 12.5px; color: var(--ink2); margin-top: 6px; }
+  .log { position: absolute; left: 356px; top: 852px; width: 1208px; height: 54px; background: var(--navy); border-radius: 14px; color: #fff; display: flex; align-items: center; padding: 0 20px; font-size: 14px; gap: 10px; }
+  .lbl { position: absolute; font-size: 12.5px; font-weight: 700; color: var(--navy); background: #fff; padding: 2px 7px; border-radius: 6px; border: 1px solid var(--line); white-space: nowrap; }
+  .built { background: var(--green-soft); color: var(--green); }
+  .road { background: #EEF1F5; color: var(--muted); }
+  .legend { position: absolute; left: 36px; top: 846px; width: 300px; font-size: 12px; color: var(--ink2); line-height: 1.5; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:30px;">
+    <div class="title">CONCORD — system architecture</div>
+    <div class="subtitle">LLMs understand intent · algorithms decide · humans own the hard calls</div>
+  </div>
+  <div class="badge"><div class="pill">No LLM in the control loop</div><div class="sub">every assignment, route and re-plan is deterministic, millisecond-fast and logged</div></div>
+
+  <!-- operator column -->
+  <div class="left"><span class="chip">OPERATOR</span></div>
+  <div class="box bo" style="left:50px; top:152px; width:234px; height:120px;"><h4>Mission console</h4><p>Type the mission in plain English; confirm the task graph.</p></div>
+  <div class="box bo" style="left:50px; top:288px; width:234px; height:176px;"><h4>Live mission map</h4><p>Agents, routes, links, dead zones, storms · P(success) gauge · explained decision log · replay.</p><span class="tag built">React + PixiJS · WebSocket</span></div>
+  <div class="box bo" style="left:50px; top:480px; width:234px; height:150px; border-color:#F3C7C7;"><h4 style="color:var(--red)">Decision cards</h4><p>Approve / change escalated calls with odds per option; override anything.</p></div>
+  <div class="box bo" style="left:50px; top:646px; width:234px; height:154px;"><h4>Disruption injector</h4><p>Kill agent · collapse bridge · drain battery · blackout · storm · new target — live.</p></div>
+
+  <!-- intent band -->
+  <div class="band intent" style="left:356px; top:124px; width:1208px; height:164px;"><span class="chip">INTENT LAYER · LLM · LANGUAGE IN, EXPLANATIONS OUT</span></div>
+  <div class="box bi" style="left:376px; top:152px; width:378px; height:120px;"><h4><span class="num" style="background:var(--violet)">1</span>Mission Compiler</h4><p>Plain-English objective → typed Mission DAG: tasks, dependencies, priorities, required capabilities.</p></div>
+  <div class="box bi" style="left:771px; top:152px; width:378px; height:120px;"><h4>Validator + human confirm</h4><p>JSON-schema + map checks (sectors exist, capabilities available, graph acyclic). Fail → re-prompt or preset DAG.</p></div>
+  <div class="box bi" style="left:1166px; top:152px; width:378px; height:120px;"><h4>Explainer</h4><p>Decision records → one-line reasons: “Scout-2 returns: 31% left, 27% + 15% reserve needed.”</p><span class="tag" style="background:#EEE9FF;color:var(--violet)">LLM or offline templates</span></div>
+
+  <!-- decision band -->
+  <div class="band decision" style="left:356px; top:330px; width:1208px; height:318px;"><span class="chip">DECISION LAYER · DETERMINISTIC ALGORITHMS · MILLISECONDS</span></div>
+  <div class="box bd" style="left:376px; top:358px; width:378px; height:130px;"><h4><span class="num" style="background:var(--orange)">5</span>Re-planner</h4><p>Event-driven: <b>repair</b> (affected tasks only) or <b>global</b> re-auction; hysteresis bonus prevents thrashing.</p></div>
+  <div class="box bd" style="left:771px; top:358px; width:378px; height:130px;"><h4><span class="num" style="background:var(--orange)">2</span>Allocator</h4><p>CBBA-style auction · time-discounted bids · capability filter · <b>battery-reserve invariant</b> (finish + get home + 15%).</p></div>
+  <div class="box bd" style="left:1166px; top:358px; width:378px; height:130px;"><h4><span class="num" style="background:var(--orange)">3</span>Router &amp; Scheduler</h4><p>Dijkstra / A* over terrain + storm-risk grid · energy model · bundle order · recharge stops.</p></div>
+  <div class="box bd" style="left:376px; top:504px; width:378px; height:130px;"><h4><span class="num" style="background:var(--red)">7</span>Escalation Engine</h4><p>P(success) &lt; 60%, irreversible or conflicting calls → decision card with odds; safe default on timeout.</p></div>
+  <div class="box bd" style="left:771px; top:504px; width:378px; height:130px;"><h4><span class="num" style="background:var(--orange)">6</span>Feasibility Forecaster</h4><p>Monte-Carlo rollouts of the live plan (K = 40) → P(mission success), plus P(success) for every option.</p></div>
+  <div class="box bd" style="left:1166px; top:504px; width:378px; height:130px;"><h4>Comms Manager</h4><p>Mesh connectivity (BFS) · relay placement · <b>value-of-information</b> queue · autonomy while disconnected.</p></div>
+
+  <!-- world band -->
+  <div class="band world" style="left:356px; top:702px; width:1208px; height:124px;"><span class="chip">WORLD LAYER · SWAPPABLE BEHIND ONE AGENT INTERFACE</span></div>
+  <div class="box bw" style="left:376px; top:728px; width:280px; height:86px;"><h4>Agent interface</h4><p>get_state() · send_plan() · events</p></div>
+  <div class="box bw" style="left:672px; top:728px; width:280px; height:86px;"><h4><span class="num" style="background:var(--blue)">4</span>Simulator v0 <span class="tag built" style="margin:0">built</span></h4><p>4 agent types · 6 disruption types · headless</p></div>
+  <div class="box bw" style="left:968px; top:728px; width:280px; height:86px;"><h4>Monitor</h4><p>telemetry diff → triggers</p></div>
+  <div class="box" style="left:1264px; top:728px; width:280px; height:86px; border-left:5px solid #9AA6B6;"><h4 style="color:var(--ink2)">Robot bridge <span class="tag road" style="margin:0">roadmap</span></h4><p>ROS 2 · PX4 / MAVLink · Open-RMF</p></div>
+
+  <div class="log"><b>Decision log &amp; replay store</b>&nbsp;— every trigger, option, score and choice is an event-sourced record → replay · audit · explanations · benchmark</div>
+  <div class="legend"><b style="color:var(--navy)">Loop:</b> 1 compile → 2 allocate → 3 route → 4 execute → 5 re-plan on events → 6 forecast → 7 escalate only if needed</div>
+
+  <svg class="abs" style="left:0; top:0;" width="1600" height="930">
+    <defs>
+      <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#003470"/></marker>
+      <marker id="ao" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#EB6834"/></marker>
+      <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D03B3B"/></marker>
+    </defs>
+    <!-- console -> compiler -->
+    <line x1="284" y1="212" x2="370" y2="212" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- compiler -> validator -->
+    <line x1="754" y1="212" x2="767" y2="212" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- validator -> allocator -->
+    <line x1="960" y1="272" x2="960" y2="352" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- allocator -> router -->
+    <line x1="1149" y1="423" x2="1162" y2="423" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- re-planner -> allocator -->
+    <line x1="754" y1="423" x2="767" y2="423" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- router -> simulator (around the right edge) -->
+    <path d="M1544,423 L1555,423 L1555,662 L900,662 L900,722" fill="none" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- monitor -> re-planner (up the left margin) -->
+    <path d="M1108,728 L1108,676 L366,676 L366,423 L371,423" fill="none" stroke="#EB6834" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#ao)"/>
+    <!-- forecaster -> escalation -->
+    <line x1="771" y1="569" x2="760" y2="569" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+    <!-- escalation -> decision cards -->
+    <line x1="376" y1="590" x2="290" y2="590" stroke="#D03B3B" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#ar)"/>
+  </svg>
+  <div class="lbl" style="left:290px; top:182px;">mission</div>
+  <div class="lbl" style="left:972px; top:300px;">validated Mission DAG</div>
+  <div class="lbl" style="left:1290px; top:648px;">plans · routes · relay stations</div>
+  <div class="lbl" style="left:430px; top:654px; color:#B4471C; border-color:#F6D2C2;">telemetry · events → triggers</div>
+</div>
+</body></html>

@@ -1,0 +1,47 @@
+.sum { padding: var(--sp-6); display: grid; gap: var(--sp-5); }
+.sum-head { display: flex; gap: var(--sp-4); align-items: flex-start; }
+.sum-head h2 { font-size: var(--fs-2xl); font-weight: 650; letter-spacing: -0.02em; margin: 2px 0 4px; }
+.sum-head p { font-size: var(--fs-sm); }
+.sum-icon { width: 44px; height: 44px; border-radius: var(--r-md); display: grid; place-items: center; flex: none; }
+.sum-icon svg { width: 22px; height: 22px; }
+.sum-icon.is-ok { background: var(--good-soft); color: var(--good); }
+.sum-icon.is-bad { background: var(--warning-soft); color: var(--warning); }
+.sum-metrics { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: var(--r-md); }
+.sum-metric { padding: 10px 14px; display: grid; gap: 2px; font-size: var(--fs-xs); }
+.sum-metric .num { font-size: var(--fs-lg); font-weight: 600; }
+.sum-metric:nth-child(n + 4) { border-top: 1px solid var(--border); }
+.sum-metric:not(:nth-child(3n + 1)) { border-left: 1px solid var(--border); }
+.sum-section { display: grid; gap: 10px; }
+.sum-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.sum-section-head h3 { font-size: var(--fs-md); font-weight: 600; }
+.sum-section-head .subtle { font-size: var(--fs-xs); }
+.cmp { display: grid; border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+.cmp-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.4fr) 84px 52px; align-items: center; gap: 12px; padding: 9px 14px; font-size: var(--fs-sm); }
+.cmp-row + .cmp-row { border-top: 1px solid var(--border); }
+.cmp-header { font-size: var(--fs-2xs); padding-block: 7px; background: var(--surface-2); }
+.cmp-row.is-you { background: rgba(57, 135, 229, 0.06); font-weight: 500; }
+.cmp-name { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.cmp-name i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.cmp-bar { display: grid; grid-template-columns: 1fr 36px; align-items: center; gap: 8px; }
+.cmp-track { height: 8px; background: rgba(255, 255, 255, 0.06); border-radius: 4px; overflow: hidden; }
+.cmp-fill { display: block; height: 100%; border-radius: 4px; animation: grow var(--dur-slow) var(--ease); transform-origin: left; }
+@keyframes grow { from { transform: scaleX(0); } }
+.r { text-align: right; }
+.sum-note { font-size: var(--fs-xs); }
+.sum-two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+.sum-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; align-content: start; }
+.sum-list li { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: var(--fs-sm); }
+.sum-list li svg { color: var(--text-3); }
+.sum-foot { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-3); padding-top: var(--sp-4); border-top: 1px solid var(--border); flex-wrap: wrap; }
+.sum-foot-right { display: flex; gap: var(--sp-2); }
+
+@media (max-width: 640px) {
+  .sum { padding: var(--sp-4); }
+  .sum-metrics { grid-template-columns: repeat(2, 1fr); }
+  .sum-metric:not(:nth-child(3n + 1)) { border-left: 0; }
+  .sum-metric:nth-child(even) { border-left: 1px solid var(--border); }
+  .sum-metric:nth-child(n + 3) { border-top: 1px solid var(--border); }
+  .sum-two { grid-template-columns: 1fr; }
+  .cmp-row { grid-template-columns: minmax(0, 1fr) 110px 44px; }
+  .cmp-row > :nth-child(3) { display: none; }
+}

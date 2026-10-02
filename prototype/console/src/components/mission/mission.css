@@ -1,0 +1,119 @@
+.mission {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--rail-w);
+  height: calc(100vh - var(--topbar-h));
+  min-height: 600px;
+}
+.mission-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6) var(--sp-6);
+  min-width: 0;
+  min-height: 0;
+}
+
+.map-card .map-stage { padding: 54px 12px 66px; }
+.map-card {
+  position: relative;
+  flex: 1;
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--map-land);
+  overflow: hidden;
+  transition: border-color var(--dur-slow) var(--ease), box-shadow var(--dur-slow) var(--ease);
+}
+.map-card.is-escalated { border-color: rgba(250, 178, 25, 0.45); box-shadow: 0 0 0 3px rgba(250, 178, 25, 0.08); }
+
+.map-overlay-top {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  right: var(--sp-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  pointer-events: none;
+  z-index: 10;
+}
+.map-overlay-top > * { pointer-events: auto; }
+.map-banners { display: grid; gap: var(--sp-2); min-width: 0; }
+.map-ctls { display: flex; gap: var(--sp-2); flex: none; }
+.map-overlay-bottom {
+  position: absolute;
+  left: var(--sp-3);
+  right: var(--sp-3);
+  bottom: var(--sp-3);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.map-overlay-bottom > * { pointer-events: auto; }
+
+.banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px 8px 12px;
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  background: rgba(20, 26, 37, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-pop);
+  animation: rise-in var(--dur) var(--ease);
+  max-width: 640px;
+}
+.banner strong { font-weight: 600; }
+.banner-accent { border-color: rgba(57, 135, 229, 0.4); color: var(--text-1); }
+.banner-accent .spinner { color: var(--accent-text); }
+.banner-warning { border-color: rgba(250, 178, 25, 0.4); }
+.banner-warning > svg { color: var(--warning); flex: none; }
+.banner-good > svg { color: var(--good); }
+.banner-btn { border: 1px solid var(--border-strong); background: var(--surface-3); border-radius: var(--r-sm); height: 26px; padding: 0 9px; font-size: var(--fs-xs); font-weight: 500; white-space: nowrap; }
+.banner-btn:hover { background: #222c3c; }
+.banner-x { border: 0; background: transparent; color: var(--text-3); display: grid; place-items: center; width: 24px; height: 24px; border-radius: var(--r-sm); }
+.banner-x:hover { color: var(--text-1); background: var(--surface-hover); }
+
+.mission-rail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface-1);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+}
+.mission-rail .log-panel { flex: 1; min-height: 260px; }
+
+@media (max-width: 1180px) {
+  .mission { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  .mission-main { padding: var(--sp-4); }
+  .map-card { flex: none; aspect-ratio: 40 / 32; min-height: 0; }
+  .mission-rail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    overflow: visible;
+  }
+  .mission-rail .forecast { grid-column: 1; grid-row: 1; }
+  .mission-rail .panel:nth-child(2) { grid-column: 1; grid-row: 2; border-top: 1px solid var(--border); }
+  .mission-rail .log-panel { grid-column: 2; grid-row: 1 / span 2; border-top: 0; border-left: 1px solid var(--border); max-height: 720px; }
+}
+
+@media (max-width: 760px) {
+  .mission-main { padding: var(--sp-3); gap: var(--sp-3); }
+  .map-card { aspect-ratio: auto; }
+  .map-card .map-stage { padding: 50px 6px 56px; height: auto; }
+  .map-card .map-svg { height: auto; aspect-ratio: 40 / 28; }
+  .map-ctls .map-ctl { padding: 0 8px; }
+  .map-overlay-top { flex-direction: column-reverse; align-items: stretch; }
+  .map-ctls { justify-content: flex-end; }
+  .mission-rail { display: flex; }
+  .mission-rail .log-panel { border-left: 0; border-top: 1px solid var(--border); max-height: 560px; }
+  .banner { font-size: var(--fs-xs); }
+}

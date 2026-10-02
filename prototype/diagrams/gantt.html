@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 640px; }
+  .grid { position: absolute; left: 250px; top: 150px; width: 1310px; height: 420px; }
+  .hour { position: absolute; top: -26px; font-size: 12px; color: var(--muted); transform: translateX(-50%); }
+  .vline { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
+  .row { position: absolute; left: 0; width: 1310px; height: 72px; border-bottom: 1px solid var(--grid); }
+  .rlabel { position: absolute; left: -218px; width: 210px; top: 14px; }
+  .rlabel b { display: block; font-size: 15.5px; color: var(--navy); }
+  .rlabel span { font-size: 12px; color: var(--ink2); }
+  .bar { position: absolute; top: 12px; height: 48px; border-radius: 10px; padding: 5px 9px; font-size: 12px; line-height: 1.25; color: #fff; font-weight: 600; overflow: hidden; }
+  .A { background: #2A78D6; } .B { background: #EB6834; } .C { background: #6A4FB3; } .D { background: #0B8A4A; } .ALL { background: var(--navy); }
+  .ms { position: absolute; top: -8px; width: 16px; height: 16px; background: var(--gold); border: 2px solid var(--navy); transform: rotate(45deg); }
+  .mslabel { position: absolute; top: 590px; font-size: 12.5px; color: var(--navy); font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:28px;">
+    <div class="title" style="font-size:27px;">36-hour build plan — v0 already de-risks the core</div>
+    <div class="subtitle">4 roles in parallel · integrate at hour 12 · feature-freeze at hour 31 · cut list protects the demo</div>
+  </div>
+  <div class="grid" id="g"></div>
+</div>
+<script>
+const g = document.getElementById('g');
+const H = 36, W = 1310, px = W / H;
+for (let h = 0; h <= H; h += 2) {
+  const v = document.createElement('div'); v.className = 'vline'; v.style.left = (h * px) + 'px'; g.appendChild(v);
+  const t = document.createElement('div'); t.className = 'hour'; t.style.left = (h * px) + 'px'; t.textContent = h + 'h'; g.appendChild(t);
+}
+const rows = [
+  ['A · World', 'sim engine, maps, events', 'A', [[2,8,'Live engine + WebSocket stream'],[18,24,'Real-map scenario (OSM ward)'],[28,31,'1,000-seed bench']]],
+  ['B · Allocation', 'auction, routing, energy', 'B', [[2,8,'Async CBBA for disconnected agents'],[12,18,'OR-Tools routing · energy calib.'],[24,28,'Hysteresis + churn'],[28,31,'Scale test 20–100']]],
+  ['C · Autonomy', 're-plan, comms, risk', 'C', [[2,8,'Monitor + trigger API'],[12,18,'Escalation cards + timeouts'],[18,24,'Comms view · VoI queue'],[24,28,'Forecast calibration']]],
+  ['D · Product & pitch', 'UI, LLM, deck', 'D', [[2,8,'PixiJS live map'],[12,18,'Disruption buttons + log'],[18,24,'LLM compiler + DAG confirm'],[24,28,'Explainer'],[31,36,'Pitch ×3 · Q&A drill']]],
+  ['All hands', 'integration & polish', 'ALL', [[0,2,'Freeze schemas'],[8,12,'First end-to-end integration'],[31,34,'Polish · backup video']]],
+];
+rows.forEach((r, i) => {
+  const row = document.createElement('div'); row.className = 'row'; row.style.top = (i * 84) + 'px';
+  row.innerHTML = `<div class="rlabel"><b>${r[0]}</b><span>${r[1]}</span></div>`;
+  r[3].forEach(([a, b, txt]) => {
+    const bar = document.createElement('div'); bar.className = 'bar ' + r[2];
+    bar.style.left = (a * px + 2) + 'px'; bar.style.width = ((b - a) * px - 4) + 'px'; bar.textContent = txt; row.appendChild(bar);
+  });
+  g.appendChild(row);
+});
+[[12,'First integration'],[24,'Feature-complete'],[31,'Freeze + benchmark'],[36,'Demo']].forEach(([h, l]) => {
+  const m = document.createElement('div'); m.className = 'ms'; m.style.left = (h * px - 8) + 'px'; m.style.top = (5 * 84 - 6) + 'px'; g.appendChild(m);
+  const t = document.createElement('div'); t.className = 'mslabel'; t.style.left = (250 + h * px) + 'px'; t.textContent = l; document.querySelector('.canvas').appendChild(t);
+});
+</script>
+</body></html>

@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:576px;height:797px;border-radius:18px}
+
+.hd{position:absolute;left:16px;top:12px;font-size:21px;font-weight:800;color:var(--navy)}
+.g{position:absolute;left:12px;right:12px;top:54px;bottom:12px;display:flex;flex-direction:column;gap:10px}
+.b{flex:1;background:#F6F8FB;border-radius:12px;padding:10px 12px;border-left:5px solid var(--navy)}
+.b:first-child{border-left-color:var(--green);background:#EEF8F2}
+.b{display:flex;flex-direction:column;justify-content:center}
+.b h5{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.b ul{margin-left:20px}
+.b li{font-size:16.5px;color:var(--ink2);line-height:1.35;margin-bottom:4px}
+
+</style></head><body><div class="canvas">
+<div class="hd">Feasibility &amp; viability</div><div class="g"><div class="b"><h5>Technical feasibility — already proven</h5><ul><li>v0 works today: 1,272-line simulator, CONCORD + 2 baselines, forecaster, renderer</li><li>4,500 seeded missions run, 0 crashes, fully reproducible</li><li>runs offline on a 2-core laptop CPU — no GPU, no cloud</li></ul></div><div class="b"><h5>Operational feasibility</h5><ul><li>operator stays in charge: confirm the task graph, approve escalations</li><li>same agent interface for simulator, ROS 2 and PX4 SITL</li></ul></div><div class="b"><h5>Resources & deployment</h5><ul><li>team of 4 × 36 h; one laptop each</li><li>open-source stack; ₹0 infrastructure; local LLM optional</li><li>one Docker image; browser console</li></ul></div><div class="b"><h5>Sustainability & viability</h5><ul><li>open-core: free engine + simulator; paid fleet console & integrations</li><li>pilot path: SDRF / municipal flood cells → NDRF</li><li>guardrails: civilian-first, human approval for irreversible acts, no weapon payloads</li></ul></div></div></div></body></html>

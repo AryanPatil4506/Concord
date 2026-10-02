@@ -1,0 +1,977 @@
+{
+ "seed": 6,
+ "metrics": {
+  "seed": 6,
+  "success": 1,
+  "delivered_frac": 1.0,
+  "survivors": 6,
+  "time_to_aid": 93.16666666666667,
+  "report_latency": 0.5,
+  "agents_lost": 1,
+  "agents_lost_non_injected": 0,
+  "coverage": 1.0,
+  "churn": 1,
+  "energy": 622.4999999999999,
+  "makespan": 170,
+  "n_events": 5,
+  "aid_times": [
+   73,
+   124,
+   162,
+   65,
+   46,
+   89
+  ]
+ },
+ "timeline": [
+  [
+   0,
+   0.8
+  ],
+  [
+   10,
+   0.85
+  ],
+  [
+   20,
+   0.9
+  ],
+  [
+   30,
+   0.85
+  ],
+  [
+   40,
+   0.925
+  ],
+  [
+   50,
+   0.9
+  ],
+  [
+   60,
+   0.95
+  ],
+  [
+   70,
+   0.975
+  ],
+  [
+   76,
+   0.9
+  ],
+  [
+   80,
+   0.925
+  ],
+  [
+   86,
+   0.0
+  ],
+  [
+   90,
+   0.575
+  ],
+  [
+   100,
+   0.6
+  ],
+  [
+   110,
+   0.6
+  ],
+  [
+   120,
+   0.6
+  ],
+  [
+   130,
+   0.8
+  ],
+  [
+   140,
+   0.875
+  ],
+  [
+   150,
+   0.825
+  ],
+  [
+   160,
+   0.9
+  ]
+ ],
+ "escalation": {
+  "t": 86,
+  "situation": "Rover-1 failed at t=85; Cargo-1 is the last payload carrier. 3 survivors (S2, S3, S6) wait in sector C under a storm cell. Forecast 0% < 60% threshold.",
+  "options": [
+   {
+    "key": "A",
+    "text": "Hold: keep drones out of the storm until it clears",
+    "p": 0.0
+   },
+   {
+    "key": "B",
+    "text": "Fly Cargo-1 through the storm now (risk of losing it)",
+    "p": 0.725
+   }
+  ],
+  "recommend": "B",
+  "p_now": 0.0
+ },
+ "events": [
+  [
+   25,
+   "bridge_collapse",
+   {
+    "bridge": 0
+   }
+  ],
+  [
+   45,
+   "comm_blackout",
+   {
+    "center": [
+     33,
+     21
+    ],
+    "r": 4.0
+   }
+  ],
+  [
+   35,
+   "battery_drain",
+   {
+    "idx": 1,
+    "frac": 0.2
+   }
+  ],
+  [
+   75,
+   "storm",
+   {
+    "center": [
+     25,
+     21
+    ],
+    "r": 5.5,
+    "dur": 80
+   }
+  ],
+  [
+   85,
+   "agent_fail",
+   {
+    "idx": 3
+   }
+  ]
+ ],
+ "log": [
+  {
+   "t": 25,
+   "kind": "event",
+   "text": "EVENT: north bridge collapses",
+   "bridge": 0
+  },
+  {
+   "t": 25,
+   "kind": "relay",
+   "text": "Relay-1 repositions to (18, 14) to keep 3 agents linked to base"
+  },
+  {
+   "t": 25,
+   "kind": "replan",
+   "text": "Global re-plan (bridge_collapse): 11 tasks re-auctioned",
+   "res": [
+    [
+     "SV-B3",
+     "Scout-1",
+     0.474,
+     "direct",
+     1.5,
+     [
+      [
+       "Scout-2",
+       0.38
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C2",
+     "Scout-2",
+     0.462,
+     "direct",
+     5.0,
+     [
+      [
+       "Scout-1",
+       0.37
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-B4",
+     "Scout-1",
+     0.461,
+     "direct",
+     5.0,
+     [
+      [
+       "Scout-2",
+       0.36
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-B6",
+     "Scout-1",
+     0.45,
+     "direct",
+     8.5,
+     [
+      [
+       "Scout-2",
+       0.36
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-B5",
+     "Scout-2",
+     0.45,
+     "direct",
+     8.5,
+     [
+      [
+       "Scout-1",
+       0.36
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D2",
+     "Scout-1",
+     0.441,
+     "direct",
+     11.5,
+     [
+      [
+       "Scout-2",
+       0.36
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D1",
+     "Scout-2",
+     0.441,
+     "direct",
+     11.5,
+     [
+      [
+       "Scout-1",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D3",
+     "Scout-1",
+     0.431,
+     "direct",
+     15.0,
+     [
+      [
+       "Scout-2",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C4",
+     "Scout-2",
+     0.431,
+     "direct",
+     15.0,
+     [
+      [
+       "Scout-1",
+       0.34
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C6",
+     "Scout-1",
+     0.42,
+     "direct",
+     18.5,
+     [
+      [
+       "Scout-2",
+       0.34
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C3",
+     "Scout-2",
+     0.42,
+     "direct",
+     18.5,
+     [
+      [
+       "Scout-1",
+       0.33
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "t": 26,
+   "kind": "detect",
+   "text": "Scout-2 spots survivor S5 at (28, 15)",
+   "agent": "Scout-2",
+   "sid": "S5"
+  },
+  {
+   "t": 26,
+   "kind": "report",
+   "text": "Base receives Scout-2's survivor report S5 (0 ticks after detection)",
+   "sid": "S5"
+  },
+  {
+   "t": 27,
+   "kind": "assign",
+   "text": "Deliver S5 -> Cargo-1 (bid 0.83, ETA t+19; others: Scout-1 ineligible, Scout-2 ineligible, Rover-1 bid 0.79)",
+   "task": "DL-S5",
+   "agent": "Cargo-1"
+  },
+  {
+   "t": 28,
+   "kind": "detect",
+   "text": "Scout-1 spots survivor S1 at (37, 8)",
+   "agent": "Scout-1",
+   "sid": "S1"
+  },
+  {
+   "t": 29,
+   "kind": "voi",
+   "text": "Scout-1 holds a survivor report in a dead zone -> detours 3 cells to reconnect (VoI priority)",
+   "agent": "Scout-1"
+  },
+  {
+   "t": 30,
+   "kind": "report",
+   "text": "Base receives Scout-1's survivor report S1 (2 ticks after detection)",
+   "sid": "S1"
+  },
+  {
+   "t": 31,
+   "kind": "assign",
+   "text": "Deliver S1 -> Rover-1 (bid 0.73, ETA t+37; others: Scout-1 ineligible, Scout-2 ineligible, Cargo-1 bid 0.52)",
+   "task": "DL-S1",
+   "agent": "Rover-1"
+  },
+  {
+   "t": 35,
+   "kind": "event",
+   "text": "EVENT: Scout-2 battery drops to 31% (cell fault)",
+   "agent": "Scout-2"
+  },
+  {
+   "t": 35,
+   "kind": "assign",
+   "text": "Survey D6 -> Scout-1 (bid 0.24, ETA t+61; others: Scout-2 bid 0.23, Cargo-1 ineligible, Rover-1 ineligible)",
+   "task": "SV-D6",
+   "agent": "Scout-1"
+  },
+  {
+   "t": 35,
+   "kind": "detect",
+   "text": "Scout-1 spots survivor S4 at (35, 13)",
+   "agent": "Scout-1",
+   "sid": "S4"
+  },
+  {
+   "t": 36,
+   "kind": "battery",
+   "text": "Scout-2 returns to base: 31% battery left, 27% needed to reach base + 15% reserve; its 4 tasks re-auctioned",
+   "agent": "Scout-2",
+   "released": [
+    "SV-C4",
+    "SV-C3",
+    "SV-C5",
+    "SV-D4"
+   ]
+  },
+  {
+   "t": 36,
+   "kind": "voi",
+   "text": "Scout-1 holds a survivor report in a dead zone -> detours 1 cells to reconnect (VoI priority)",
+   "agent": "Scout-1"
+  },
+  {
+   "t": 36,
+   "kind": "assign",
+   "text": "Survey C3 -> Scout-2 (bid 0.27, ETA t+44; others: Scout-1 bid 0.22, Cargo-1 ineligible, Rover-1 ineligible)",
+   "task": "SV-C3",
+   "agent": "Scout-2"
+  },
+  {
+   "t": 36,
+   "kind": "assign",
+   "text": "Survey C4 -> Scout-2 (bid 0.27, ETA t+47; others: Scout-1 bid 0.23, Cargo-1 ineligible, Rover-1 ineligible)",
+   "task": "SV-C4",
+   "agent": "Scout-2"
+  },
+  {
+   "t": 36,
+   "kind": "assign",
+   "text": "Survey C5 -> Scout-2 (bid 0.26, ETA t+51; others: Scout-1 bid 0.22, Cargo-1 ineligible, Rover-1 ineligible)",
+   "task": "SV-C5",
+   "agent": "Scout-2"
+  },
+  {
+   "t": 36,
+   "kind": "assign",
+   "text": "Survey D4 -> Scout-2 (bid 0.24, ETA t+59; others: Scout-1 bid 0.23, Cargo-1 ineligible, Rover-1 ineligible)",
+   "task": "SV-D4",
+   "agent": "Scout-2"
+  },
+  {
+   "t": 36,
+   "kind": "report",
+   "text": "Base receives Scout-1's survivor report S4 (1 ticks after detection)",
+   "sid": "S4"
+  },
+  {
+   "t": 37,
+   "kind": "assign",
+   "text": "Deliver S4 -> Rover-1 (bid 0.72, ETA t+39; others: Scout-1 ineligible, Scout-2 ineligible, Cargo-1 bid 0.56)",
+   "task": "DL-S4",
+   "agent": "Rover-1"
+  },
+  {
+   "t": 45,
+   "kind": "event",
+   "text": "EVENT: comm blackout around (33, 21)"
+  },
+  {
+   "t": 46,
+   "kind": "deliver",
+   "text": "Cargo-1 delivers med-kit to S5",
+   "agent": "Cargo-1",
+   "sid": "S5"
+  },
+  {
+   "t": 52,
+   "kind": "detect",
+   "text": "Scout-1 spots survivor S2 at (21, 19)",
+   "agent": "Scout-1",
+   "sid": "S2"
+  },
+  {
+   "t": 52,
+   "kind": "detect",
+   "text": "Scout-1 spots survivor S3 at (24, 19)",
+   "agent": "Scout-1",
+   "sid": "S3"
+  },
+  {
+   "t": 52,
+   "kind": "report",
+   "text": "Base receives Scout-1's survivor report S2 (0 ticks after detection)",
+   "sid": "S2"
+  },
+  {
+   "t": 52,
+   "kind": "report",
+   "text": "Base receives Scout-1's survivor report S3 (0 ticks after detection)",
+   "sid": "S3"
+  },
+  {
+   "t": 53,
+   "kind": "assign",
+   "text": "Deliver S3 -> Rover-1 (bid 0.74, ETA t+36; others: Scout-1 ineligible, Scout-2 ineligible, Cargo-1 bid 0.70)",
+   "task": "DL-S3",
+   "agent": "Rover-1"
+  },
+  {
+   "t": 53,
+   "kind": "assign",
+   "text": "Deliver S2 -> Cargo-1 (bid 0.71, ETA t+37; others: Scout-1 ineligible, Scout-2 ineligible, Rover-1 bid 0.50)",
+   "task": "DL-S2",
+   "agent": "Cargo-1"
+  },
+  {
+   "t": 65,
+   "kind": "deliver",
+   "text": "Rover-1 delivers med-kit to S4",
+   "agent": "Rover-1",
+   "sid": "S4"
+  },
+  {
+   "t": 73,
+   "kind": "deliver",
+   "text": "Rover-1 delivers med-kit to S1",
+   "agent": "Rover-1",
+   "sid": "S1"
+  },
+  {
+   "t": 75,
+   "kind": "event",
+   "text": "EVENT: storm cell forms over C (aerial hazard)"
+  },
+  {
+   "t": 75,
+   "kind": "replan",
+   "text": "Global re-plan (storm): 6 tasks re-auctioned",
+   "res": [
+    [
+     "DL-S3",
+     "Rover-1",
+     0.969,
+     "direct",
+     14.0,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "DL-S2",
+     "Rover-1",
+     0.603,
+     "via_base",
+     60.0,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C5",
+     "Scout-2",
+     0.464,
+     "direct",
+     4.0,
+     [
+      [
+       "Scout-1",
+       0.34
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D4",
+     "Scout-2",
+     0.433,
+     "direct",
+     12.5,
+     [
+      [
+       "Scout-1",
+       0.31
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D5",
+     "Scout-1",
+     0.403,
+     "direct",
+     20.5,
+     [
+      [
+       "Scout-2",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D6",
+     "Scout-1",
+     0.405,
+     "direct",
+     24.0,
+     [
+      [
+       "Scout-2",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ],
+      [
+       "Rover-1",
+       null
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "t": 75,
+   "kind": "detect",
+   "text": "Scout-2 spots survivor S6 at (20, 24)",
+   "agent": "Scout-2",
+   "sid": "S6"
+  },
+  {
+   "t": 75,
+   "kind": "report",
+   "text": "Base receives Scout-2's survivor report S6 (0 ticks after detection)",
+   "sid": "S6"
+  },
+  {
+   "t": 76,
+   "kind": "assign",
+   "text": "Deliver S6 -> Cargo-1 (bid 0.88, ETA t+14; others: Scout-1 ineligible, Scout-2 ineligible, Rover-1 bid 0.58)",
+   "task": "DL-S6",
+   "agent": "Cargo-1"
+  },
+  {
+   "t": 85,
+   "kind": "event",
+   "text": "EVENT: Rover-1 suffers a hardware failure",
+   "agent": "Rover-1",
+   "released": [
+    "DL-S3",
+    "DL-S2"
+   ]
+  },
+  {
+   "t": 86,
+   "kind": "escalation",
+   "text": "ESCALATION: P(success) 0% < 60% -> operator card; recommended B"
+  },
+  {
+   "t": 86,
+   "kind": "replan",
+   "text": "Global re-plan (storm): 6 tasks re-auctioned",
+   "res": [
+    [
+     "DL-S6",
+     "Cargo-1",
+     1.045,
+     "direct",
+     4.0,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ]
+     ]
+    ],
+    [
+     "DL-S2",
+     "Cargo-1",
+     0.542,
+     "via_base",
+     38.9,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D4",
+     "Scout-2",
+     0.474,
+     "direct",
+     1.5,
+     [
+      [
+       "Scout-1",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D5",
+     "Scout-1",
+     0.444,
+     "direct",
+     9.0,
+     [
+      [
+       "Scout-2",
+       0.38
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-D6",
+     "Scout-1",
+     0.438,
+     "direct",
+     12.5,
+     [
+      [
+       "Scout-2",
+       0.38
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "DL-S3",
+     "Cargo-1",
+     0.263,
+     "via_base",
+     76.9,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "t": 89,
+   "kind": "deliver",
+   "text": "Cargo-1 delivers med-kit to S6",
+   "agent": "Cargo-1",
+   "sid": "S6"
+  },
+  {
+   "t": 124,
+   "kind": "deliver",
+   "text": "Cargo-1 delivers med-kit to S2",
+   "agent": "Cargo-1",
+   "sid": "S2"
+  },
+  {
+   "t": 155,
+   "kind": "event",
+   "text": "EVENT: storm clears"
+  },
+  {
+   "t": 155,
+   "kind": "replan",
+   "text": "Global re-plan (storm_end): 3 tasks re-auctioned",
+   "res": [
+    [
+     "DL-S3",
+     "Cargo-1",
+     1.01,
+     "direct",
+     8.0,
+     [
+      [
+       "Scout-1",
+       null
+      ],
+      [
+       "Scout-2",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C3",
+     "Scout-1",
+     0.356,
+     "direct",
+     11.0,
+     [
+      [
+       "Scout-2",
+       0.36
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ],
+    [
+     "SV-C4",
+     "Scout-1",
+     0.352,
+     "direct",
+     14.5,
+     [
+      [
+       "Scout-2",
+       0.35
+      ],
+      [
+       "Cargo-1",
+       null
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "t": 162,
+   "kind": "deliver",
+   "text": "Cargo-1 delivers med-kit to S3",
+   "agent": "Cargo-1",
+   "sid": "S3"
+  }
+ ]
+}

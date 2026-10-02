@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1100px; height: 830px; }
+  .node { position: absolute; width: 250px; background: #fff; border: 1.5px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+  .node h4 { font-size: 18px; font-weight: 800; color: var(--navy); display: flex; gap: 9px; align-items: center; margin-bottom: 4px; }
+  .node p { font-size: 13.5px; color: var(--ink2); line-height: 1.38; }
+  .who { font-size: 11px; font-weight: 800; letter-spacing: 0.8px; padding: 2px 7px; border-radius: 6px; margin-left: auto; }
+  .llm { background: #EEE9FF; color: var(--violet); }
+  .alg { background: #FFE7DB; color: #B4471C; }
+  .sw { background: #E3EFFD; color: var(--blue); }
+  .hum { background: var(--red-soft); color: var(--red); }
+  .center { position: absolute; left: 380px; top: 400px; width: 360px; text-align: center; }
+  .center .big { font-size: 25px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+  .center .small { font-size: 13.5px; color: var(--ink2); margin-top: 10px; }
+  .lbl { position: absolute; font-size: 12.5px; font-weight: 700; color: var(--red); background: #fff; padding: 2px 7px; border-radius: 6px; border: 1px solid #F3C7C7; white-space: nowrap; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:34px; top:28px;">
+    <div class="title" style="font-size:27px;">One loop, three owners</div>
+    <div class="subtitle">LLM for language · algorithms for decisions · humans for the hard calls</div>
+  </div>
+  <svg class="abs" style="left:0;top:0" width="1100" height="830">
+    <defs><marker id="a" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#003470"/></marker>
+          <marker id="v" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#6A4FB3"/></marker>
+          <marker id="r" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#D03B3B"/></marker></defs>
+    <ellipse cx="560" cy="480" rx="300" ry="230" fill="none" stroke="#E6EAF0" stroke-width="18"/>
+    <path d="M 687 272 A 300 230 0 0 1 832 383" fill="none" stroke="#003470" stroke-width="3.2" marker-end="url(#a)"/>
+    <path d="M 832 577 A 300 230 0 0 1 687 688" fill="none" stroke="#003470" stroke-width="3.2" marker-end="url(#a)"/>
+    <path d="M 433 688 A 300 230 0 0 1 288 577" fill="none" stroke="#003470" stroke-width="3.2" marker-end="url(#a)"/>
+    <path d="M 288 383 A 300 230 0 0 1 433 272" fill="none" stroke="#003470" stroke-width="3.2" marker-end="url(#a)"/>
+    <path d="M 300 175 C 360 175 380 215 428 222" fill="none" stroke="#6A4FB3" stroke-width="3" marker-end="url(#v)"/>
+    <line x1="220" y1="545" x2="170" y2="632" stroke="#D03B3B" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#r)"/>
+    <path d="M 320 735 C 370 735 390 722 428 718" fill="none" stroke="#D03B3B" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#r)"/>
+  </svg>
+  <div class="node" style="left:40px; top:112px; width:258px; border-color:#DCD3FB;"><h4>Understand <span class="who llm">LLM</span></h4><p>Plain-English mission → validated task graph. Once per mission.</p></div>
+  <div class="node" style="left:435px; top:182px;"><h4>Allocate <span class="who alg">ALGO</span></h4><p>Auction by capability, distance, battery &amp; risk — never a task you can't finish and fly home from.</p></div>
+  <div class="node" style="left:735px; top:420px;"><h4>Act &amp; monitor <span class="who sw">SWARM</span></h4><p>Failures, battery, blocked routes, lost links, weather and new targets stream in.</p></div>
+  <div class="node" style="left:435px; top:655px;"><h4>Re-plan <span class="who alg">ALGO</span></h4><p>Repair only what broke, in milliseconds; hysteresis keeps plans stable.</p></div>
+  <div class="node" style="left:110px; top:420px; width:240px;"><h4>Forecast <span class="who alg">ALGO</span></h4><p>40 Monte-Carlo rollouts → live P(mission success).</p></div>
+  <div class="node" style="left:40px; top:640px; width:280px; border-color:#F3C7C7;"><h4 style="color:var(--red)">Escalate <span class="who hum">HUMAN</span></h4><p>Only if P &lt; 60% or a call is irreversible: decision card with odds per option.</p></div>
+  <div class="lbl" style="left:326px; top:752px;">human decision</div>
+  <div class="center"><div class="big">The plan will break.<br>The mission stays alive.</div><div class="small">no LLM between sensing and acting ·<br>every decision logged &amp; explained</div></div>
+</div>
+</body></html>

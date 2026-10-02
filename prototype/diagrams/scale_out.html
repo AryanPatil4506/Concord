@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 880px; }
+  .b { position: absolute; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+  .b h4 { font-size: 15.5px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+  .b p { font-size: 12.5px; color: var(--ink2); line-height: 1.35; }
+  .zone { position: absolute; border-radius: 18px; }
+  .zone .chip { position: absolute; left: 14px; top: -12px; font-size: 11.5px; }
+  .tbl { position: absolute; left: 860px; top: 122px; width: 704px; }
+  .tr { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--grid); }
+  .tr .k { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .tr .v { font-size: 13px; color: var(--ink2); line-height: 1.38; }
+  .tr .v b { color: var(--navy); }
+  .meas { display: inline-block; font-size: 11px; font-weight: 800; color: var(--green); background: var(--green-soft); border-radius: 5px; padding: 1px 6px; margin-left: 4px; }
+  .est { display: inline-block; font-size: 11px; font-weight: 800; color: #9A6A00; background: #FFF4D6; border-radius: 5px; padding: 1px 6px; margin-left: 4px; }
+  .tests { position: absolute; left: 36px; top: 742px; width: 1528px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .t { background: var(--navy); color: #fff; border-radius: 14px; padding: 11px 13px; }
+  .t b { display: block; font-size: 14px; margin-bottom: 3px; color: var(--gold); }
+  .t span { font-size: 12.3px; line-height: 1.35; color: #DCE6F5; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:28px;">
+    <div class="title" style="font-size:27px;">“YC says yes tomorrow” — built to survive success</div>
+    <div class="subtitle">Stateless edges, one worker per mission, an append-only event log, and autonomy that keeps flying when the cloud doesn't</div>
+  </div>
+
+  <div class="zone" style="left:36px; top:122px; width:790px; height:594px; background:#F6F8FB; border:1.5px solid var(--line);"><span class="chip" style="background:var(--navy);color:#fff">SCALE-OUT ARCHITECTURE</span></div>
+  <div class="b" style="left:60px; top:150px; width:230px; height:92px;"><h4>Operators · judges · API</h4><p>web console, mobile view, partner systems</p></div>
+  <div class="b" style="left:320px; top:150px; width:230px; height:92px;"><h4>Gateway (stateless)</h4><p>FastAPI + WebSocket fan-out · auth · rate limits · autoscaled</p></div>
+  <div class="b" style="left:580px; top:150px; width:222px; height:92px;"><h4>LLM service</h4><p>hosted model + local Ollama fallback · cached</p></div>
+  <div class="b" style="left:60px; top:280px; width:742px; height:120px; border-left:5px solid var(--orange);"><h4>Mission workers — one decision loop per mission, sharded &amp; horizontally scaled</h4><p>Each worker owns allocator · re-planner · comms manager · forecaster for its mission; forecasts fan out to a rollout pool. Crash → another worker replays the event log and resumes in seconds.</p></div>
+  <div class="b" style="left:60px; top:430px; width:742px; height:62px; background:#FFF3EC; border-color:#F6D2C2;"><h4 style="margin:0">Event bus — NATS JetStream / Redis Streams · telemetry in, plans out, back-pressure on floods</h4></div>
+  <div class="b" style="left:60px; top:520px; width:360px; height:92px; border-left:5px solid var(--blue);"><h4>Edge gateways (per site)</h4><p>ROS 2 · PX4 / MAVLink · simulator — keep local CBBA running if the cloud link drops</p></div>
+  <div class="b" style="left:442px; top:520px; width:360px; height:92px;"><h4>Stores</h4><p>Postgres (missions, DAGs) · TimescaleDB (telemetry) · append-only decision log · object store (replays)</p></div>
+  <div class="b" style="left:60px; top:632px; width:742px; height:62px;"><h4 style="margin:0">Observability — OpenTelemetry traces · Prometheus / Grafana SLOs: re-plan p99 &lt; 100 ms, escalation delivered &lt; 2 s</h4></div>
+
+  <svg class="abs" style="left:0;top:0" width="1600" height="880">
+    <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7A8699"/></marker></defs>
+    <g stroke="#7A8699" stroke-width="2" fill="none" marker-end="url(#a)">
+      <line x1="290" y1="196" x2="316" y2="196"/>
+      <line x1="550" y1="196" x2="576" y2="196"/>
+      <line x1="435" y1="242" x2="435" y2="276"/>
+      <line x1="435" y1="400" x2="435" y2="426"/>
+      <line x1="240" y1="492" x2="240" y2="516"/>
+      <line x1="620" y1="492" x2="620" y2="516"/>
+    </g>
+  </svg>
+
+  <div class="tbl">
+    <div class="tr"><div class="k">10× more missions</div><div class="v">Stateless gateway + mission-sharded workers. v0 runs a 5-agent mission tick (world + decisions) in <b>0.8 ms</b> on one core<span class="meas">measured</span> → roughly <b>250 live missions per core</b> at 5 Hz<span class="est">estimate</span>.</div></div>
+    <div class="tr"><div class="k">100+ agents per mission</div><div class="v">Repair re-plan <b>8.6 ms at 200 agents</b><span class="meas">measured</span>; global re-plans (2.4 s at 200) run asynchronously while the swarm keeps executing; sector-level auctions and a Rust/Numba port next.</div></div>
+    <div class="tr"><div class="k">A worker crashes</div><div class="v">Agents keep their task bundles (disconnected autonomy); a standby worker rebuilds state from the event log — nothing is lost because every decision is a record.</div></div>
+    <div class="tr"><div class="k">The cloud link drops</div><div class="v">Edge gateway runs decentralised CBBA locally; agents enforce the battery-reserve rule on board and return home with margin.</div></div>
+    <div class="tr"><div class="k">LLM outage or cost spike</div><div class="v">Zero impact on control — the LLM is not in the loop. Local model + preset mission templates + template explanations.</div></div>
+    <div class="tr"><div class="k">A bad release</div><div class="v">CI replays the 300-seed benchmark on every pull request and blocks merges that regress time-to-aid, losses or churn; canary rollout.</div></div>
+    <div class="tr" style="border:none"><div class="k">Abuse / safety</div><div class="v">Role-based access, signed plans, geofences + no-fly zones (e.g. India's Digital Sky red/yellow zones) enforced as hard routing constraints.</div></div>
+  </div>
+
+  <div class="tests">
+    <div class="t"><b>Property-based tests</b><span>Hypothesis: no task double-assigned · reserve never violated · DAG order respected · every decision logged</span></div>
+    <div class="t"><b>Simulation regression</b><span>300 seeded missions per PR (under a minute on 2 cores) with metric gates; the 4,500-mission suite nightly</span></div>
+    <div class="t"><b>Chaos testing</b><span>the disruption injector doubles as a chaos monkey: kill agents, links, workers, the LLM</span></div>
+    <div class="t"><b>Load testing</b><span>k6 / Locust: 1,000 WebSocket viewers, 1,000 simulated agents, telemetry floods</span></div>
+  </div>
+</div>
+</body></html>

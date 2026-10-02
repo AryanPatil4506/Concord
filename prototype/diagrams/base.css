@@ -1,0 +1,40 @@
+@font-face { font-family: "Inter"; font-weight: 400; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url("fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url("fonts/inter-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Anton"; font-weight: 400; src: url("fonts/anton-latin-400-normal.woff2") format("woff2"); }
+
+:root {
+  --navy: #003470;
+  --ink2: #44536B;
+  --muted: #7A8699;
+  --line: #D6DDE7;
+  --grid: #E6EAF0;
+  --orange: #EB6834;
+  --orange-soft: #FFF3EC;
+  --gold: #FFCD82;
+  --violet: #6A4FB3;
+  --violet-soft: #F3F0FF;
+  --blue: #2A78D6;
+  --blue-soft: #EAF3FF;
+  --green: #0B8A4A;
+  --green-soft: #E9F8EF;
+  --red: #D03B3B;
+  --red-soft: #FDECEC;
+  --card: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: transparent; font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--navy); }
+.canvas { position: relative; background: var(--card); border-radius: 26px; border: 1.5px solid rgba(0,52,112,0.12); overflow: hidden; }
+.abs { position: absolute; }
+.title { font-size: 30px; font-weight: 800; letter-spacing: -0.3px; color: var(--navy); }
+.subtitle { font-size: 16px; color: var(--ink2); margin-top: 6px; }
+.chip { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 1.1px; padding: 5px 10px; border-radius: 999px; }
+.box { position: absolute; background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.box h4 { font-size: 16.5px; font-weight: 800; color: var(--navy); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+.box p { font-size: 13.2px; line-height: 1.38; color: var(--ink2); }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; margin-top: 7px; }
+.num { display: inline-flex; width: 22px; height: 22px; border-radius: 50%; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; background: var(--navy); flex: none; }
+.note { font-size: 12px; color: var(--muted); }
+svg text { font-family: "Inter", sans-serif; }

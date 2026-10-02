@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:1205px;height:418px;border-radius:18px}
+
+.hd{position:absolute;left:16px;top:12px;font-size:21px;font-weight:800;color:var(--navy)}
+.sub{position:absolute;left:16px;top:42px;font-size:13.5px;color:var(--ink2)}
+.grid{position:absolute;left:150px;top:92px;width:1044px;height:300px}
+.hour{position:absolute;top:-20px;font-size:12px;color:var(--muted);transform:translateX(-50%)}
+.vline{position:absolute;top:0;bottom:0;width:1px;background:var(--grid)}
+.row{position:absolute;left:0;width:1044px;height:52px;border-bottom:1px solid var(--grid)}
+.rl{position:absolute;left:-140px;width:132px;top:6px;font-size:14.5px;font-weight:800;color:var(--navy);line-height:1.1}
+.rl span{display:block;font-size:11.5px;font-weight:600;color:var(--muted)}
+.bar{position:absolute;top:7px;height:38px;border-radius:8px;padding:3px 7px;font-size:13px;line-height:1.2;color:#fff;font-weight:700;overflow:hidden}
+.A{background:#2A78D6}.B{background:#EB6834}.C{background:#6A4FB3}.D{background:#0B8A4A}.X{background:var(--navy)}
+
+</style></head><body><div class="canvas">
+
+<div class="hd">36-hour build plan</div><div class="sub">v0 already de-risks the core · integrate at hour 12 · freeze at hour 31</div>
+<div class="grid" id="g"></div>
+<script>
+const g=document.getElementById('g');const H=36,W=1044,px=W/H;
+for(let h=0;h<=H;h+=4){const v=document.createElement('div');v.className='vline';v.style.left=(h*px)+'px';g.appendChild(v);
+const t=document.createElement('div');t.className='hour';t.style.left=(h*px)+'px';t.textContent=h+'h';g.appendChild(t);}
+const rows=[['World','A · sim &amp; maps','A',[[2,8,'Live engine + WebSocket'],[18,24,'Real Mumbai map (OSM)'],[28,31,'1k-seed run']]],
+['Allocation','B · auction','B',[[2,8,'Async CBBA'],[12,18,'OR-Tools routing'],[24,28,'Churn tuning'],[28,31,'Scale test']]],
+['Autonomy','C · re-plan · comms','C',[[2,8,'Trigger API'],[12,18,'Escalation cards'],[18,24,'Comms view'],[24,28,'Calibration']]],
+['Product','D · UI · LLM','D',[[2,8,'PixiJS map'],[12,18,'Disruption buttons'],[18,24,'LLM compiler'],[24,28,'Explainer'],[31,36,'Pitch · Q&amp;A']]],
+['All hands','integrate · polish','X',[[0,2,'Specs'],[8,12,'Integration'],[31,34,'Dry runs']]]];
+rows.forEach((r,i)=>{const row=document.createElement('div');row.className='row';row.style.top=(i*58)+'px';
+row.innerHTML=`<div class="rl">${r[0]}<span>${r[1]}</span></div>`;
+r[3].forEach(([a,b,t])=>{const bar=document.createElement('div');bar.className='bar '+r[2];bar.style.left=(a*px+2)+'px';bar.style.width=((b-a)*px-4)+'px';bar.innerHTML=t;row.appendChild(bar);});
+g.appendChild(row);});
+</script>
+</div></body></html>

@@ -1,0 +1,20 @@
+=== MAIN (300 random scenarios) ===
+concord | succ 0.990 [0.977, 1.000] | deliv 0.998 [0.996, 1.000] | TTA 62.396 [60.814, 64.110] | rep_lat 0.836 [0.756, 0.925] | lost(avoidable) 0.107 [0.073, 0.143] | lost(all) 0.687 [0.623, 0.750] | churn 0.117 [0.077, 0.163] | energy 578.962 [572.511, 585.449] | ms 131.243 [125.957, 137.050]
+greedy | succ 0.963 [0.940, 0.983] | deliv 0.992 [0.987, 0.996] | TTA 71.058 [68.890, 73.304] | rep_lat 8.710 [8.252, 9.183] | lost(avoidable) 0.197 [0.147, 0.250] | lost(all) 0.777 [0.700, 0.853] | churn 0.000 [0.000, 0.000] | energy 611.016 [602.460, 619.029] | ms 30.822 [29.579, 32.148]
+static | succ 0.200 [0.157, 0.247] | deliv 0.620 [0.590, 0.649] | TTA 174.159 [169.545, 178.931] | rep_lat 8.093 [7.692, 8.503] | lost(avoidable) 0.223 [0.173, 0.277] | lost(all) 0.797 [0.723, 0.867] | churn 0.000 [0.000, 0.000] | energy 668.240 [654.340, 682.554] | ms 37.886 [36.535, 39.358]
+paired concord-greedy: {'time_to_aid': '-8.662 [-10.055, -7.369]', 'report_latency': '-7.875 [-8.284, -7.446]', 'agents_lost_non_injected': '-0.090 [-0.143, -0.037]', 'success': '0.027 [0.007, 0.047]', 'delivered_frac': '0.006 [0.002, 0.011]', 'energy': '-32.055 [-38.891, -24.605]'}
+=== STRESS ===
+0 concord: succ 1.00 deliv 1.00 tta 62 lostA 0.00 | greedy: succ 1.00 deliv 1.00 tta 70 lostA 0.00 | static: succ 0.43 deliv 0.73 tta 164 lostA 0.00
+1 concord: succ 1.00 deliv 1.00 tta 62 lostA 0.02 | greedy: succ 1.00 deliv 1.00 tta 70 lostA 0.06 | static: succ 0.37 deliv 0.69 tta 169 lostA 0.06
+2 concord: succ 0.99 deliv 1.00 tta 63 lostA 0.03 | greedy: succ 0.96 deliv 0.99 tta 73 lostA 0.13 | static: succ 0.32 deliv 0.65 tta 173 lostA 0.09
+3 concord: succ 0.99 deliv 1.00 tta 62 lostA 0.05 | greedy: succ 0.97 deliv 0.99 tta 71 lostA 0.27 | static: succ 0.27 deliv 0.64 tta 172 lostA 0.21
+4 concord: succ 0.98 deliv 1.00 tta 62 lostA 0.08 | greedy: succ 0.93 deliv 0.98 tta 72 lostA 0.24 | static: succ 0.23 deliv 0.63 tta 172 lostA 0.22
+5 concord: succ 0.96 deliv 0.99 tta 62 lostA 0.11 | greedy: succ 0.89 deliv 0.97 tta 73 lostA 0.33 | static: succ 0.18 deliv 0.59 tta 174 lostA 0.30
+6 concord: succ 0.96 deliv 0.99 tta 62 lostA 0.12 | greedy: succ 0.88 deliv 0.97 tta 72 lostA 0.37 | static: succ 0.16 deliv 0.59 tta 174 lostA 0.35
+=== ABLATION ===
+full                     succ 0.990 deliv 0.998 tta 62.4 rep 0.8 lostA 0.107 churn 0.12 energy 579
+no_battery_invariant     succ 0.990 deliv 0.998 tta 62.7 rep 0.8 lostA 0.090 churn 0.05 energy 560
+no_hysteresis            succ 0.993 deliv 0.999 tta 62.0 rep 0.8 lostA 0.117 churn 3.85 energy 534
+no_relay_repositioning   succ 0.990 deliv 0.998 tta 63.4 rep 1.1 lostA 0.123 churn 0.20 energy 581
+no_risk_awareness        succ 0.987 deliv 0.998 tta 62.4 rep 0.8 lostA 0.187 churn 0.10 energy 574
+no_voi_messaging         succ 0.993 deliv 0.998 tta 63.9 rep 4.4 lostA 0.097 churn 0.06 energy 571

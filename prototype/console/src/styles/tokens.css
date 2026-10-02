@@ -1,0 +1,100 @@
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("../assets/fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("../assets/fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; font-display: swap; src: url("../assets/fonts/inter-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0a0e15;
+  --surface-1: #0f141d;
+  --surface-2: #141a25;
+  --surface-3: #1a2230;
+  --surface-hover: rgba(255, 255, 255, 0.04);
+  --surface-active: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+  --scrim: rgba(5, 8, 13, 0.62);
+
+  --text-1: #eef2f8;
+  --text-2: #a7b2c3;
+  --text-3: #6e7a8c;
+  --text-inverse: #0a0e15;
+
+  --accent: #3987e5;
+  --accent-hover: #4b95ee;
+  --accent-text: #7db4f5;
+  --accent-soft: rgba(57, 135, 229, 0.14);
+  --accent-ring: rgba(57, 135, 229, 0.45);
+
+  --good: #2bb673;
+  --good-soft: rgba(43, 182, 115, 0.14);
+  --warning: #fab219;
+  --warning-soft: rgba(250, 178, 25, 0.13);
+  --serious: #ec835a;
+  --critical: #e5484d;
+  --critical-text: #f17377;
+  --critical-soft: rgba(229, 72, 77, 0.14);
+
+  --agent-scout: #5aa2f0;
+  --agent-cargo: #e06a97;
+  --agent-rover: #dba23c;
+  --agent-relay: #2fb7a3;
+  --agent-lost: #5d6879;
+
+  --policy-concord: #3987e5;
+  --policy-greedy: #d95926;
+  --policy-static: #199e70;
+
+  --map-land: #111824;
+  --map-water: #183152;
+  --map-water-edge: #1e3b61;
+  --map-building: #222c3b;
+  --map-bridge: #b8955a;
+  --map-grid: rgba(255, 255, 255, 0.025);
+  --map-sector: rgba(200, 215, 235, 0.22);
+  --map-link: rgba(160, 200, 240, 0.38);
+  --map-storm: #8b7cf6;
+  --map-dead: #e5484d;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --fs-2xs: 10.5px;
+  --fs-xs: 11.5px;
+  --fs-sm: 12.5px;
+  --fs-md: 13.5px;
+  --fs-lg: 15px;
+  --fs-xl: 18px;
+  --fs-2xl: 24px;
+  --fs-3xl: 32px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-pop: 0 16px 40px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 320ms;
+
+  --topbar-h: 56px;
+  --rail-w: 372px;
+  --icon-sm: 14px;
+  --icon-md: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur: 0ms; --dur-slow: 0ms; }
+}

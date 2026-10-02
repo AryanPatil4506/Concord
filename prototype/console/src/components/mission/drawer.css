@@ -1,0 +1,32 @@
+.d-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.d-section { display: grid; gap: 8px; }
+.d-activity { font-size: var(--fs-lg); font-weight: 500; }
+.d-batt { display: grid; grid-template-columns: 1fr 44px; align-items: center; gap: 10px; font-size: var(--fs-sm); color: var(--text-2); text-align: right; }
+.d-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; }
+.dstat { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.dstat:nth-child(odd) { border-right: 1px solid var(--border); }
+.dstat:nth-last-child(-n + 2) { border-bottom: 0; }
+.dstat-label { font-size: var(--fs-2xs); color: var(--text-3); }
+.dstat-value { font-size: var(--fs-sm); font-weight: 500; margin-top: 2px; }
+.d-plan { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+.d-plan li { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 8px; padding: 7px 8px; border-radius: var(--r-sm); font-size: var(--fs-sm); color: var(--text-2); }
+.d-plan li.is-current { background: var(--accent-soft); color: var(--text-1); }
+.d-plan-dot { display: grid; place-items: center; color: var(--text-3); }
+.d-plan li.is-current .d-plan-dot { color: var(--accent-text); }
+.d-empty { font-size: var(--fs-sm); }
+.d-log { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.d-log li { display: grid; grid-template-columns: 44px 14px 1fr; gap: 8px; align-items: start; font-size: var(--fs-xs); color: var(--text-1); }
+.d-log li svg { width: 13px; height: 13px; margin-top: 1px; color: var(--text-3); }
+.d-log li.tone-warning svg { color: var(--warning); }
+.d-log li.tone-critical svg { color: var(--critical-text); }
+.d-log li.tone-good svg { color: var(--good); }
+.d-log li.tone-accent svg { color: var(--accent-text); }
+.d-steps { list-style: none; padding: 0; margin: 0; display: grid; }
+.d-steps li { position: relative; display: grid; grid-template-columns: 24px 1fr; gap: 10px; padding-bottom: 16px; color: var(--text-3); }
+.d-steps li:not(:last-child)::before { content: ""; position: absolute; left: 11px; top: 20px; bottom: 0; width: 1.5px; background: var(--border-strong); }
+.d-steps li.is-done:not(:last-child)::before { background: var(--good); opacity: 0.5; }
+.d-step-icon { display: grid; place-items: center; height: 20px; }
+.d-steps li.is-done { color: var(--text-1); }
+.d-steps li.is-done .d-step-icon { color: var(--good); }
+.d-step-label { font-size: var(--fs-sm); font-weight: 500; }
+.d-step-note { font-size: var(--fs-xs); }

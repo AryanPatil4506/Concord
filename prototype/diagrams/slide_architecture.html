@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+.canvas{width:1181px;height:691px;border-radius:18px}
+
+.band{position:absolute;border-radius:14px}.band .chip{position:absolute;left:12px;top:-11px;font-size:11.5px;padding:4px 9px}
+.bx{position:absolute;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:8px 10px}
+.bx h4{font-size:16.5px;font-weight:800;color:var(--navy);display:flex;gap:7px;align-items:center}
+.bx p{font-size:14px;color:var(--ink2);line-height:1.28;margin-top:3px}
+.nm{display:inline-flex;width:20px;height:20px;border-radius:50%;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:#fff;flex:none}
+.bi{border-left:5px solid var(--violet)}.bd{border-left:5px solid var(--orange)}.bw{border-left:5px solid var(--blue)}.bo{border-left:5px solid var(--navy)}
+.lbl{position:absolute;font-size:12.5px;font-weight:700;color:var(--navy);background:#fff;padding:1px 6px;border-radius:5px;border:1px solid var(--line);white-space:nowrap}
+.pill{position:absolute;right:14px;top:12px;background:var(--orange);color:#fff;font-weight:800;font-size:14.5px;padding:6px 12px;border-radius:999px}
+.hd{position:absolute;left:16px;top:12px;font-size:21px;font-weight:800;color:var(--navy)}
+.log{position:absolute;left:196px;right:14px;bottom:12px;height:40px;background:var(--navy);border-radius:10px;color:#fff;font-size:14px;display:flex;align-items:center;padding:0 14px}
+
+</style></head><body><div class="canvas">
+
+<div class="hd">System architecture &amp; workflow</div><div class="pill">No LLM in the control loop</div>
+<div class="band" style="left:12px;top:62px;width:168px;height:568px;background:#F6F8FB;border:1.5px solid var(--line)"><span class="chip" style="background:var(--navy);color:#fff">OPERATOR</span></div>
+<div class="bx bo" style="left:22px;top:84px;width:148px;height:104px"><h4>Mission console</h4><p>type the goal, confirm the graph</p></div>
+<div class="bx bo" style="left:22px;top:204px;width:148px;height:104px"><h4>Live map</h4><p>agents, links, storms, P(success)</p></div>
+<div class="bx bo" style="left:22px;top:324px;width:148px;height:120px;border-color:#F3C7C7"><h4 style="color:var(--red)">Decision cards</h4><p>approve the hard calls, with odds</p></div>
+<div class="bx bo" style="left:22px;top:460px;width:148px;height:156px"><h4>Disruption buttons</h4><p>kill · block · drain · blackout · storm · target</p></div>
+
+<div class="band" style="left:196px;top:62px;width:962px;height:122px;background:var(--violet-soft)"><span class="chip" style="background:var(--violet);color:#fff">INTENT LAYER · LLM</span></div>
+<div class="bx bi" style="left:210px;top:82px;width:300px;height:88px"><h4><span class="nm" style="background:var(--violet)">1</span>Mission compiler</h4><p>goal → typed task graph (DAG)</p></div>
+<div class="bx bi" style="left:526px;top:82px;width:300px;height:88px"><h4>Validator + confirm</h4><p>schema &amp; map checks · human OK</p></div>
+<div class="bx bi" style="left:842px;top:82px;width:302px;height:88px"><h4>Explainer</h4><p>decision records → plain reasons</p></div>
+
+<div class="band" style="left:196px;top:206px;width:962px;height:252px;background:var(--orange-soft)"><span class="chip" style="background:var(--orange);color:#fff">DECISION LAYER · DETERMINISTIC · MILLISECONDS</span></div>
+<div class="bx bd" style="left:210px;top:226px;width:300px;height:104px"><h4><span class="nm" style="background:var(--orange)">5</span>Re-planner</h4><p>repair vs global re-plan · hysteresis</p></div>
+<div class="bx bd" style="left:526px;top:226px;width:300px;height:104px"><h4><span class="nm" style="background:var(--orange)">2</span>Allocator</h4><p>CBBA-style auction · battery-reserve rule</p></div>
+<div class="bx bd" style="left:842px;top:226px;width:302px;height:104px"><h4><span class="nm" style="background:var(--orange)">3</span>Router</h4><p>Dijkstra/A* on terrain + storm risk</p></div>
+<div class="bx bd" style="left:210px;top:342px;width:300px;height:104px"><h4><span class="nm" style="background:var(--red)">7</span>Escalation engine</h4><p>P &lt; 60% or irreversible → card</p></div>
+<div class="bx bd" style="left:526px;top:342px;width:300px;height:104px"><h4><span class="nm" style="background:var(--orange)">6</span>Feasibility forecaster</h4><p>40 Monte-Carlo rollouts</p></div>
+<div class="bx bd" style="left:842px;top:342px;width:302px;height:104px"><h4>Comms manager</h4><p>relay placement · value-of-info queue</p></div>
+
+<div class="band" style="left:196px;top:486px;width:962px;height:130px;background:var(--blue-soft)"><span class="chip" style="background:var(--blue);color:#fff">WORLD LAYER · ONE AGENT INTERFACE</span></div>
+<div class="bx bw" style="left:210px;top:508px;width:222px;height:94px"><h4>Agent interface</h4><p>get_state · send_plan</p></div>
+<div class="bx bw" style="left:446px;top:508px;width:222px;height:94px"><h4><span class="nm" style="background:var(--blue)">4</span>Simulator v0</h4><p>built · 6 disruption types</p></div>
+<div class="bx bw" style="left:682px;top:508px;width:222px;height:94px"><h4>Monitor</h4><p>telemetry → triggers</p></div>
+<div class="bx" style="left:918px;top:508px;width:226px;height:94px;border-left:5px solid #9AA6B6"><h4 style="color:var(--ink2)">Robot bridge</h4><p>ROS 2 · PX4 (next)</p></div>
+<div class="log"><b>Decision log &amp; replay</b>&nbsp;— every trigger, option, score and choice is recorded → audit · explain · benchmark</div>
+<svg class="abs" style="left:0;top:0" width="1181" height="691">
+ <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#003470"/></marker>
+ <marker id="ao" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#EB6834"/></marker>
+ <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#D03B3B"/></marker></defs>
+ <line x1="170" y1="126" x2="205" y2="126" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <line x1="510" y1="126" x2="521" y2="126" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <line x1="676" y1="170" x2="676" y2="221" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <line x1="826" y1="278" x2="837" y2="278" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <line x1="510" y1="278" x2="521" y2="278" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <line x1="526" y1="394" x2="515" y2="394" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <path d="M1144,278 L1152,278 L1152,470 L557,470 L557,503" fill="none" stroke="#003470" stroke-width="2.4" marker-end="url(#ah)"/>
+ <path d="M793,508 L793,478 L202,478 L202,278 L205,278" fill="none" stroke="#EB6834" stroke-width="2.4" stroke-dasharray="6 4" marker-end="url(#ao)"/>
+ <line x1="210" y1="394" x2="176" y2="394" stroke="#D03B3B" stroke-width="2.4" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+</svg>
+<div class="lbl" style="left:690px;top:186px">validated task graph</div>
+<div class="lbl" style="left:960px;top:458px">plans · routes</div>
+<div class="lbl" style="left:300px;top:458px;color:#B4471C;border-color:#F6D2C2">events · telemetry</div>
+</div></body></html>

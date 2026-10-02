@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css">
+<style>
+  .canvas { width: 1600px; height: 760px; }
+  .mx { position: absolute; left: 110px; top: 150px; width: 540px; height: 510px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 6px; }
+  .cell { border-radius: 12px; position: relative; }
+  .ax { position: absolute; font-size: 13px; color: var(--ink2); font-weight: 700; }
+  .dot { position: absolute; min-width: 42px; height: 34px; border-radius: 17px; background: #fff; border: 2px solid var(--navy); font-size: 13.5px; font-weight: 800; color: var(--navy); display: flex; align-items: center; justify-content: center; padding: 0 8px; }
+  .list { position: absolute; left: 700px; top: 132px; width: 860px; }
+  .item { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--grid); }
+  .item .id { font-size: 14px; font-weight: 800; color: var(--navy); background: #EEF3FA; border-radius: 8px; text-align: center; padding: 6px 0; height: 30px; }
+  .item b { font-size: 15px; color: var(--navy); }
+  .item p { font-size: 13px; color: var(--ink2); line-height: 1.35; margin-top: 2px; }
+</style></head>
+<body>
+<div class="canvas">
+  <div class="abs" style="left:36px; top:28px;">
+    <div class="title" style="font-size:27px;">Risks we already see — and how they are handled</div>
+    <div class="subtitle">Likelihood × impact for the hackathon build; every high-impact risk has a tested mitigation</div>
+  </div>
+  <div class="mx">
+    <div class="cell" style="background:#FFF1E8"></div><div class="cell" style="background:#FDE3D6"></div><div class="cell" style="background:#FBCFC0"></div>
+    <div class="cell" style="background:#F4F7FA"></div><div class="cell" style="background:#FFF1E8"></div><div class="cell" style="background:#FDE3D6"></div>
+    <div class="cell" style="background:#EEF6F0"></div><div class="cell" style="background:#F4F7FA"></div><div class="cell" style="background:#FFF1E8"></div>
+  </div>
+  <div class="ax" style="left:110px; top:672px; width:540px; display:flex; justify-content:space-around;"><span>Low</span><span>Medium</span><span>High</span></div>
+  <div class="ax" style="left:300px; top:700px; color:var(--navy)">LIKELIHOOD →</div>
+  <div class="ax" style="left:58px; top:224px;">High</div>
+  <div class="ax" style="left:40px; top:396px;">Medium</div>
+  <div class="ax" style="left:64px; top:568px;">Low</div>
+  <div class="ax" style="left:14px; top:470px; transform: rotate(-90deg); transform-origin: left top; color:var(--navy)">IMPACT →</div>
+  <!-- dots: col x centers 200, 382, 564 ; row y centers 235, 405, 575 (canvas coords) -->
+  <div class="dot" style="left:538px; top:216px;">R5</div>
+  <div class="dot" style="left:356px; top:216px;">R1</div>
+  <div class="dot" style="left:538px; top:388px;">R7</div>
+  <div class="dot" style="left:326px; top:388px;">R3</div>
+  <div class="dot" style="left:388px; top:388px;">R6</div>
+  <div class="dot" style="left:356px; top:560px;">R4</div>
+  <div class="dot" style="left:144px; top:388px;">R2</div>
+  <div class="dot" style="left:206px; top:388px;">R8</div>
+  <div class="list">
+    <div class="item"><div class="id">R5</div><div><b>Too much scope for 36 hours</b><p>v0 already runs the allocator, re-planner, forecaster and benchmark; hour-12 integration gate; cut list (ablations → replay → OR-Tools → LLM explainer).</p></div></div>
+    <div class="item"><div class="id">R1</div><div><b>A re-planning bug appears live on stage</b><p>4,500 seeded missions already fuzzed in v0; 10+ dry runs; invariant tests; recorded backup video; judge buttons rate-limited to one event per 2 s.</p></div></div>
+    <div class="item"><div class="id">R7</div><div><b>Sim-to-real gap</b><p>Decision layer talks to one agent interface; ROS 2 / PX4 SITL bridge next; physics deliberately out of scope (PS asks for mission-level autonomy).</p></div></div>
+    <div class="item"><div class="id">R3</div><div><b>“It's just a game”</b><p>Lead with the 300-scenario benchmark, a real Mumbai flood scenario and the explained decision log with numbers.</p></div></div>
+    <div class="item"><div class="id">R6</div><div><b>Venue internet fails</b><p>Local LLM via Ollama; deterministic explanation templates; preset mission DAGs; everything else is offline by design.</p></div></div>
+    <div class="item"><div class="id">R4</div><div><b>LLM returns an invalid task graph</b><p>Schema-constrained output → validator → human confirmation → preset fallback. The LLM never moves a robot.</p></div></div>
+    <div class="item"><div class="id">R2</div><div><b>Allocator thrashing</b><p>Hysteresis bonus: 0.12 reassignments per mission vs 3.85 without it (measured on 300 missions).</p></div></div>
+    <div class="item"><div class="id">R8</div><div><b>Global re-plan slows at 200+ agents (2.4 s)</b><p>Repair-first (8.6 ms @ 200); global re-plans run async while the swarm keeps executing; sector-level auctions; Rust/Numba port.</p></div></div>
+  </div>
+</div>
+</body></html>
