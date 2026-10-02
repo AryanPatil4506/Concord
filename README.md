@@ -56,6 +56,8 @@ docker run -p 8080:8080 concord      # → http://127.0.0.1:8080
 
 `prototype/Dockerfile` builds the console and runs the engine in one container, listening on `$PORT` (default 8080). Any host that runs a Docker web service with WebSockets works; point it at the `prototype` directory. The engine keeps the mission in memory, so run a single instance. With 1 vCPU each re-forecast takes several seconds; 2 vCPUs keep them around 5 s.
 
+For a free Hugging Face Space (Docker SDK), upload the two files in [`deploy/huggingface/`](deploy/huggingface/); the Space builds from this repository.
+
 ## Repository
 
 | Path | Contents |
