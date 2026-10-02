@@ -4,6 +4,7 @@ Each rollout is seeded by its index, so results match concord_sim.forecast exact
 """
 from __future__ import annotations
 
+import multiprocessing
 import os
 from concurrent.futures import ProcessPoolExecutor
 
@@ -16,7 +17,8 @@ _pool: ProcessPoolExecutor | None = None
 def pool() -> ProcessPoolExecutor:
     global _pool
     if _pool is None:
-        _pool = ProcessPoolExecutor(max_workers=max(2, min(8, (os.cpu_count() or 4) - 1)))
+        _pool = ProcessPoolExecutor(max_workers=max(2, min(8, (os.cpu_count() or 4) - 1)),
+                                    mp_context=multiprocessing.get_context("spawn"))
     return _pool
 
 

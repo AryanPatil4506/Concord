@@ -168,6 +168,8 @@ class MissionSession:
             await self._complete()
 
     def _schedule_forecast(self):
+        if self._forecast_tasks:  # skip rather than queue up on small machines
+            return
         w = self.world
         snap = fc.portable(w)
         t = w.t
