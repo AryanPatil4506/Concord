@@ -64,5 +64,3 @@ docker run -p 8080:8080 concord      # → http://127.0.0.1:8080
 | [`prototype/server/`](prototype/server/) | FastAPI + WebSocket server around the engine |
 | [`prototype/console/`](prototype/console/) | React + TypeScript mission console |
 | [`prototype/results/`](prototype/results/) | Benchmark, stress-sweep, ablation and scaling results |
-| [`EL-05_CONCORD_Research_Dossier.md`](EL-05_CONCORD_Research_Dossier.md) | Evidence, full results, competitor notes, judge Q&A |
-| [`EL-05_CONCORD_Slide_Content.md`](EL-05_CONCORD_Slide_Content.md) | Presentation content |
