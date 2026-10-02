@@ -17,7 +17,8 @@ _pool: ProcessPoolExecutor | None = None
 def pool() -> ProcessPoolExecutor:
     global _pool
     if _pool is None:
-        _pool = ProcessPoolExecutor(max_workers=max(2, min(8, (os.cpu_count() or 4) - 1)),
+        default = max(2, min(8, (os.cpu_count() or 4) - 1))
+        _pool = ProcessPoolExecutor(max_workers=int(os.environ.get("FORECAST_WORKERS", default)),
                                     mp_context=multiprocessing.get_context("spawn"))
     return _pool
 
