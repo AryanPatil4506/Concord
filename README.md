@@ -55,7 +55,3 @@ Open <http://127.0.0.1:8000>, compile the default objective, and deploy the **St
 | [`prototype/results/`](prototype/results/) | Benchmark, stress-sweep, ablation and scaling results |
 | [`EL-05_CONCORD_Research_Dossier.md`](EL-05_CONCORD_Research_Dossier.md) | Evidence, full results, competitor notes, judge Q&A |
 | [`EL-05_CONCORD_Slide_Content.md`](EL-05_CONCORD_Slide_Content.md) | Presentation content |
-
-## Limits of v0
-
-Grid world with abstract agents and no physics; the auction is centralised while agents are connected; the forecaster's calibration is optimistic because it samples from the same disruption prior as the benchmark; the mission compiler in the console is rule-based. Full list in the dossier, §3.6.
