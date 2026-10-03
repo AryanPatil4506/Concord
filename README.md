@@ -52,11 +52,15 @@ docker build -t concord prototype
 docker run -p 8080:8080 concord      # → http://127.0.0.1:8080
 ```
 
-### Deploying
+### Hosted demo (Vercel, frontend only)
 
-`prototype/Dockerfile` builds the console and runs the engine in one container, listening on `$PORT` (default 8080). Any host that runs a Docker web service with WebSockets works; point it at the `prototype` directory. The engine keeps the mission in memory, so run a single instance. With 1 vCPU each re-forecast takes several seconds; 2 vCPUs keep them around 5 s. On fractional-CPU free tiers, set `FORECAST_WORKERS=1` to keep memory low (≈ 75 MB); expect re-forecasts of about 20 s at 0.25 vCPU.
+The console also builds as a static site that needs no engine: each mission is a stream recorded from the real engine and replayed in the browser, and at the operator escalation every option replays its own recorded outcome. Four missions are included — the storyboard (with the escalation), two random benchmark scenarios, and an "operator chaos" run with five injected disruptions. Pause, step, speed, the map, the decision log, the forecast and the Evidence and Method pages all work; injecting new disruptions needs the live engine.
 
-For a free Hugging Face Space (Docker SDK), upload the two files in [`deploy/huggingface/`](deploy/huggingface/); the Space builds from this repository.
+```bash
+cd prototype/console && npm run build:demo   # → dist/, servable by any static host
+```
+
+`vercel.json` at the repo root builds this for Vercel: import the repository at <https://vercel.com/new>, keep the defaults, and deploy. To re-record the missions after changing the engine, run `python record_demo.py` in `prototype/` (writes `console/public/demo/`).
 
 ## Repository
 
@@ -64,5 +68,5 @@ For a free Hugging Face Space (Docker SDK), upload the two files in [`deploy/hug
 |---|---|
 | [`prototype/`](prototype/) | Simulator, CONCORD policy, baselines, benchmark, live console — see its [README](prototype/README.md) for reproduction steps |
 | [`prototype/server/`](prototype/server/) | FastAPI + WebSocket server around the engine |
-| [`prototype/console/`](prototype/console/) | React + TypeScript mission console |
+| [`prototype/console/`](prototype/console/) | React + TypeScript mission console (`public/demo/` holds the recorded demo missions) |
 | [`prototype/results/`](prototype/results/) | Benchmark, stress-sweep, ablation and scaling results |

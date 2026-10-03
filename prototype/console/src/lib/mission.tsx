@@ -1,4 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, type ReactNode } from "react";
+import { DEMO } from "./api";
+import { DemoEngine } from "./demo";
 import type { DisruptionKind, MissionSnapshot, ServerMessage } from "./types";
 
 export type Connection = "connecting" | "open" | "closed";
@@ -129,8 +131,16 @@ export function MissionProvider({ children }: { children: ReactNode }) {
     lastInjectAt: 0,
   });
   const wsRef = useRef<WebSocket | null>(null);
+  const demoRef = useRef<DemoEngine | null>(null);
 
   useEffect(() => {
+    if (DEMO) {
+      const engine = new DemoEngine((msg) => dispatch({ type: "message", msg }));
+      demoRef.current = engine;
+      dispatch({ type: "connection", value: "open" });
+      engine.connect();
+      return () => engine.end();
+    }
     let closed = false;
     let retry: number | undefined;
     let attempt = 0;
@@ -158,6 +168,26 @@ export function MissionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const send = useCallback((msg: Record<string, unknown>) => {
+    const demo = demoRef.current;
+    if (demo) {
+      switch (msg.type) {
+        case "start":
+          return void demo.start(msg.scenario as string);
+        case "end":
+          return demo.end();
+        case "play":
+          return demo.play();
+        case "pause":
+          return demo.pause();
+        case "step":
+          return demo.step();
+        case "speed":
+          return demo.speed(msg.mult as number);
+        case "decide":
+          return demo.decide(msg.key as string);
+      }
+      return;
+    }
     const ws = wsRef.current;
     if (ws && ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(msg));
   }, []);

@@ -1,0 +1,30 @@
+[
+ {
+  "id": "storyboard",
+  "title": "Flood SAR \u00b7 storyboard",
+  "blurb": "Seed 6 \u00b7 6 survivors \u00b7 200 ticks \u00b7 5 scripted disruptions revealed as they happen (the mission in the demo video). Includes an operator escalation.",
+  "fixed_seed": 6,
+  "tmax": 200
+ },
+ {
+  "id": "random-42",
+  "title": "Flood SAR \u00b7 random scenario (seed 42)",
+  "blurb": "5 survivors \u00b7 320 ticks \u00b7 disruptions drawn from the benchmark prior, unknown to the planner in advance.",
+  "fixed_seed": 42,
+  "tmax": 320
+ },
+ {
+  "id": "random-1234",
+  "title": "Flood SAR \u00b7 random scenario (seed 1234)",
+  "blurb": "5 survivors \u00b7 320 ticks \u00b7 a second draw from the benchmark prior.",
+  "fixed_seed": 1234,
+  "tmax": 320
+ },
+ {
+  "id": "chaos",
+  "title": "Flood SAR \u00b7 operator chaos",
+  "blurb": "Seed 77 \u00b7 6 survivors \u00b7 240 ticks \u00b7 an operator breaks the plan live: hardware failure, bridge collapse, storm, comms blackout and a new emergency call.",
+  "fixed_seed": 77,
+  "tmax": 240
+ }
+]

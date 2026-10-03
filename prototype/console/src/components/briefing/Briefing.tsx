@@ -1,5 +1,6 @@
 import { ArrowRight, Check, CircleAlert, Cpu, Rocket, Sparkles, Wand2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { compileObjective, DEMO, getDefaultObjective, getScenarios } from "../../lib/api";
 import { useMission } from "../../lib/mission";
 import type { CompiledMission, ScenarioInfo } from "../../lib/types";
 import { AgentGlyph } from "../glyphs";
@@ -28,12 +29,12 @@ export function Briefing() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    Promise.all([fetch("/api/scenarios").then((r) => r.json()), fetch("/api/default-objective").then((r) => r.json())])
-      .then(([sc, obj]) => {
+    Promise.all([getScenarios(), getDefaultObjective()])
+      .then(([sc, text]) => {
         setScenarios(sc);
-        setObjective((o) => o || obj.text);
+        setObjective((o) => o || text);
       })
-      .catch(() => setError("Can't reach the engine. Start it with `python -m server`."));
+      .catch(() => setError(DEMO ? "Couldn't load the demo missions — check your connection." : "Can't reach the engine. Start it with `python -m server`."));
   }, [store.connection]);
 
   const current = scenarios.find((s) => s.id === scenario);
@@ -43,13 +44,7 @@ export function Briefing() {
     setBusy("compile");
     setError(null);
     try {
-      const r = await fetch("/api/compile", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ text: objective, scenario }),
-      });
-      if (!r.ok) throw new Error();
-      const [data] = await Promise.all([r.json(), new Promise((res) => setTimeout(res, 450))]);
+      const [data] = await Promise.all([compileObjective(objective, scenario), new Promise((res) => setTimeout(res, 450))]);
       setCompiled(data);
     } catch {
       setError("Compilation failed — is the engine running?");
@@ -61,6 +56,11 @@ export function Briefing() {
   const deploy = () => {
     if (!compiled) return;
     setBusy("deploy");
+    if (DEMO && compiled.sectors.length < 4)
+      actions.notify({
+        level: "info",
+        message: "This hosted demo replays missions recorded over all four sectors; run the engine locally to fly a narrower objective.",
+      });
     actions.start({
       scenario,
       seed: current?.fixed_seed == null && seed ? Number(seed) : null,
@@ -80,6 +80,13 @@ export function Briefing() {
           CONCORD turns your objective into a task graph, auctions the work across a mixed air–ground team, re-plans the moment the world
           changes, and asks you only when the odds drop.
         </p>
+        {DEMO && (
+          <p className="brief-demo-note">
+            <Badge tone="accent">Hosted demo</Badge> Each scenario below is a mission recorded from the real CONCORD engine. The console replays it
+            live — pause, step, change speed, inspect any agent or decision, and answer the operator escalation in the storyboard: every option
+            plays out its own recorded outcome.
+          </p>
+        )}
         <ol className="brief-steps" aria-label="Progress">
           {["Objective", "Review task graph", "Deploy"].map((s, i) => (
             <li key={s} className={i + 1 < step ? "is-done" : i + 1 === step ? "is-current" : ""}>
@@ -126,7 +133,7 @@ export function Briefing() {
                   <span>
                     <span className="scenario-title">
                       {sentence(s.title.replace("Flood SAR · ", ""))}
-                      {s.id === "storyboard" && <Badge tone="accent">Demo</Badge>}
+                      {s.id === "storyboard" && <Badge tone="accent">{DEMO ? "Start here" : "Demo"}</Badge>}
                     </span>
                     <span className="scenario-blurb">{s.blurb}</span>
                   </span>

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --prefix prototype/console",
+  "buildCommand": "npm run build:demo --prefix prototype/console",
+  "outputDirectory": "prototype/console/dist",
+  "headers": [
+    {
+      "source": "/demo/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }]
+    }
+  ]
+}

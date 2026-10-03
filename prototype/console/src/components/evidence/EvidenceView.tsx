@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { EmptyState, Segmented } from "../ui/ui";
 import { CIBars, PolicyLegend, StressChart } from "./charts";
 import { ABLATIONS, DOSSIER_EXTRA, LIMITS, POLICIES, SCALING, tri, type EvidenceData, type Policy, type Triple } from "./data";
+import { getEvidence } from "../../lib/api";
 import "./evidence.css";
 
 type MetricId = "success" | "time_to_aid" | "report_latency" | "agents_lost_non_injected" | "energy";
@@ -57,8 +58,7 @@ export function EvidenceView() {
   const [stressMetric, setStressMetric] = useState<keyof typeof STRESS_METRICS>("success");
 
   useEffect(() => {
-    fetch("/api/evidence")
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
+    getEvidence<EvidenceData>()
       .then(setData)
       .catch(() => setError(true));
   }, []);

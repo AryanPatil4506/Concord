@@ -1,5 +1,6 @@
 import { CircleCheckBig, Crosshair, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { DEMO } from "../../lib/api";
 import { useMission } from "../../lib/mission";
 import { DISRUPTIONS } from "../../lib/meta";
 import type { DisruptionKind, LogEntry, MissionSnapshot } from "../../lib/types";
@@ -58,7 +59,9 @@ export function MissionView({ mission, onNewMission }: { mission: MissionSnapsho
         ? "Answer the escalation first"
         : phase === "complete"
           ? "The mission is complete"
-          : null;
+          : DEMO
+            ? "Live injection needs the engine running locally — this hosted demo replays recorded missions. Try the “Operator chaos” mission to watch injected disruptions."
+            : null;
 
   useEffect(() => {
     if (injectBlocked) setPlacing(null);
