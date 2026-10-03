@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "installCommand": "npm ci --prefix prototype/console",
-  "buildCommand": "npm run build:demo --prefix prototype/console",
-  "outputDirectory": "prototype/console/dist",
+  "framework": "vite",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build:demo",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/demo/(.*)",

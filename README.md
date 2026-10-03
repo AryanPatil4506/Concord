@@ -60,7 +60,7 @@ The console also builds as a static site that needs no engine: each mission is a
 cd prototype/console && npm run build:demo   # → dist/, servable by any static host
 ```
 
-`vercel.json` at the repo root builds this for Vercel: import the repository at <https://vercel.com/new>, keep the defaults, and deploy. To re-record the missions after changing the engine, run `python record_demo.py` in `prototype/` (writes `console/public/demo/`).
+For Vercel, import the repository at <https://vercel.com/new>, set **Root Directory** to `prototype/console` and deploy; `prototype/console/vercel.json` selects the demo build. To re-record the missions after changing the engine, run `python record_demo.py` in `prototype/` (writes `console/public/demo/`).
 
 ## Repository
 
